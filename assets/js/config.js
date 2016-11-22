@@ -1,7 +1,7 @@
 
 require.config({
 	paths: {
-		"pager": "./pager",
+		"pager": "./test/pager",
 		// see more at https://cdnjs.com/
 		"underscore": '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore',
 		"backbone": '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone',
