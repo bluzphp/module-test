@@ -7,9 +7,9 @@ install:
   #- printf "\n" | pecl install imagick
   # Composer
   - rm -rf ./*
-  - ls -la
   - composer self-update
-  - composer create-project bluzphp/skeleton . --stability=dev
+  - composer create-project bluzphp/skeleton --stability=dev
+  - cd skeleton
   - ENV=dev composer require bluzphp/module-test
   # Database
   - mysql -e 'CREATE DATABASE bluz;'
