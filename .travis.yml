@@ -6,7 +6,7 @@ install:
   # ImageMagick
   #- printf "\n" | pecl install imagick
   # Composer
-  - rm -rf .* 2> /dev/null
+  - rm -rf ./*
   - composer self-update
   - composer create-project bluzphp/skeleton . --stability=dev
   - ENV=dev composer require bluzphp/module-test
