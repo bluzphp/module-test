@@ -9,10 +9,11 @@ install:
   - rm -rf ./*
   - composer self-update
   - composer create-project bluzphp/skeleton --stability=dev
-  - cd skeleton
-  - ENV=dev composer require bluzphp/module-test
   # Database
   - mysql -e 'CREATE DATABASE bluz;'
+  # composer reuire
+  - cd skeleton
+  - ENV=dev composer require bluzphp/module-test
   # Newman
   - npm install -g newman@1
 before_script:
