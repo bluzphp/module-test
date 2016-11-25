@@ -16,13 +16,13 @@ use Bluz\Proxy\Layout;
 /**
  * @return void
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Options',
         ]
     );

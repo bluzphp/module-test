@@ -16,13 +16,13 @@ use Bluz\Proxy\Layout;
 /**
  * @return void
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Grid with SQL',
         ]
     );
@@ -30,7 +30,7 @@ return function () {
     $grid->setModule($this->module);
     $grid->setController($this->controller);
     // just example of same custom param for build URL
-    $grid->setParams(['id'=>5]);
+    $grid->setParams([ 'id'=>5 ]);
 
     $this->assign('grid', $grid);
 };

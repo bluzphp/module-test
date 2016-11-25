@@ -20,13 +20,13 @@ use Bluz\Proxy\Request;
  * @param int $a
  * @return false
  */
-return function ($a = 42) {
+return function($a = 42) {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Routers Examples',
         ]
     );

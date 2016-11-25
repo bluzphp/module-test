@@ -20,20 +20,20 @@ use Bluz\Proxy\Layout;
  * @param  string $alias
  * @return string
  */
-return function ($alias) {
+return function($alias) {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Grid with Select',
         ]
     );
     $grid = new Test\SelectGrid();
     $grid->setModule($this->module);
     $grid->setController($this->controller);
-    $grid->setParams(['alias'=>$alias]);
+    $grid->setParams([ 'alias'=>$alias ]);
 
     $this->assign('grid', $grid);
 

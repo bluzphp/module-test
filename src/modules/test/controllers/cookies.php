@@ -18,13 +18,13 @@ use Bluz\Proxy\Response;
 /**
  * @return void
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Cookies',
         ]
     );
@@ -35,7 +35,7 @@ return function () {
 
     // use Response object
     Response::setCookie('response', 'call');
-    Response::setCookie('time', 'hour', time() + 3600);
+    Response::setCookie('time', 'hour', time()+3600);
 
     $this->disableView();
 };
