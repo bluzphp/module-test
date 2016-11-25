@@ -20,7 +20,7 @@ use Bluz\Proxy\Request;
  * @param bool $messages
  * @return void
  */
-return function ($messages = false) {
+return function($messages = false) {
     /**
      * @var Controller $this
      */
@@ -32,7 +32,7 @@ return function ($messages = false) {
 
         $this->assign('baz', 'qux');
     }
-    Messages::addNotice('Method '. Request::getMethod());
+    Messages::addNotice('Method '.Request::getMethod());
 
     $this->assign('foo', 'bar');
 };

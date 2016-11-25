@@ -14,7 +14,7 @@ use Bluz\Controller\Controller;
  * @param $formName
  * @return void
  */
-return function ($formName) {
+return function($formName) {
     /**
      * @var Controller $this
      */

@@ -16,13 +16,13 @@ use Bluz\Proxy\Session;
 /**
  * @return array
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Session',
         ]
     );

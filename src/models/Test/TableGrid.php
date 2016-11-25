@@ -37,8 +37,8 @@ class TableGrid extends Grid
 
         $this->setAdapter($adapter);
         $this->setDefaultLimit(15);
-        $this->setAllowOrders(['name', 'id', 'status']);
-        $this->setAllowFilters(['status', 'id']);
+        $this->setAllowOrders([ 'name', 'id', 'status' ]);
+        $this->setAllowFilters([ 'status', 'id' ]);
 
         return $this;
     }

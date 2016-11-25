@@ -19,13 +19,13 @@ use Bluz\Proxy\Request;
  * @param  bool $remember
  * @return void
  */
-return function ($sex = false, $car = 'none', $remember = false) {
+return function($sex = false, $car = 'none', $remember = false) {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'View Form Helpers',
         ]
     );

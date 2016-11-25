@@ -16,7 +16,7 @@ use Bluz\Controller\Controller;
  * @TODO: need more informative example
  * @return bool
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */
@@ -29,8 +29,8 @@ return function () {
     $table = Users\Table::getInstance();
 
     var_dump($table->getColumns());
-    var_dump($table->findRow(['1']));
-    var_dump($table->findRowWhere(['id' => '0']));
+    var_dump($table->findRow([ '1' ]));
+    var_dump($table->findRowWhere([ 'id' => '0' ]));
 
     return false;
 };

@@ -18,13 +18,13 @@ use Bluz\Proxy\Layout;
  * @return void
  * @throws \Exception
  */
-return function ($id = null) {
+return function($id = null) {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Cache Data',
         ]
     );
