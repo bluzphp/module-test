@@ -7,9 +7,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 /*Table structure for table `test` */
 
-REPLACE INTO `auth` (`userId`, `provider`, `foreignKey`, `token`, `tokenSecret`, `tokenType`, `created`, `updated`, `expired`)
-VALUES ('2','token','admin','$2y$10$wkZxb1sp8TsRXNL2s5KjGuFD58hGJQy4oyihm8xo7OBtV2uH7hQUu','c8ab812795bb6a2784e30527d5b167fc','access','2015-01-01 00:00:00',NULL,'2025-01-01 00:00:00');
-
 REPLACE INTO `acl_privileges` (`roleId`, `module`, `privilege`) VALUES
   ('2','test','Create'),
   ('2','test','Delete'),

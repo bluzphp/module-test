@@ -11,16 +11,14 @@ install:
   - composer create-project bluzphp/skeleton --stability=dev
   # Database
   - mysql -e 'CREATE DATABASE bluz;'
-  # composer reuire
   - cd skeleton
-  - ENV=dev composer require bluzphp/module-test
-  # Newman
-  - npm install -g newman@1
-before_script:
-  # Database
   - mysql -uroot bluz < structure.ddl
   - mysql -uroot bluz < dump.sql
   - mysql -uroot bluz < tests/dump.sql
+  # composer require
+  - ENV=dev composer require bluzphp/module-test
+  # Newman
+  - npm install -g newman@1
 script:
   - mkdir .reports
   # Code style
