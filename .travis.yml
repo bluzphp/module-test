@@ -8,7 +8,7 @@ install:
   # Composer
   - rm -rf ./*
   - composer self-update
-  - composer create-project kvasenko/skeleton=dev-refactoring-for-bluz-module-installer --stability=dev
+  - composer create-project bluzphp/skeleton --stability=dev
   - cd skeleton
   - ENV=dev composer require bluzphp/module-test
   # Database
