@@ -20,7 +20,7 @@ use Bluz\Proxy\Request;
  * @param  int $optional
  * @return array
  */
-return function($int, $string, $array, $optional = 0) {
+return function ($int, $string, $array, $optional = 0) {
     /**
      * @var Controller $this
      */

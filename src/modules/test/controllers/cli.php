@@ -17,7 +17,7 @@ use Bluz\Controller\Controller;
  * @param bool $flag
  * @return array
  */
-return function($flag = false) {
+return function ($flag = false) {
     /**
      * @var Controller $this
      */

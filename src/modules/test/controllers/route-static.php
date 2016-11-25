@@ -18,7 +18,7 @@ use Bluz\Proxy\Request;
  * @route /another-route.html
  * @return false
  */
-return function() {
+return function () {
     /**
      * @var Controller $this
      */

@@ -16,7 +16,7 @@ use Bluz\Proxy\Layout;
 /**
  * @return string
  */
-return function() {
+return function () {
     /**
      * @var Controller $this
      */

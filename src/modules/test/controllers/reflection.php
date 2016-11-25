@@ -22,7 +22,7 @@ use Bluz\Proxy\Layout;
  * @route /test-reflection.html
  * @return array
  */
-return function($id = 0, $other = "default value") {
+return function ($id = 0, $other = "default value") {
     /**
      * @var Controller $this
      */

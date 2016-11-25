@@ -16,7 +16,7 @@ use Bluz\Proxy\Response;
  * FIXME: closure should be back...
  * @return \closure
  */
-return function() {
+return function () {
     /**
      * @var Controller $this
      */
@@ -29,7 +29,7 @@ return function() {
     Response::addHeader('Cache-Control', 'must-revalidate');
     Response::addHeader('Pragma', 'public');
 
-    return function() {
+    return function () {
         readfile(PATH_PUBLIC.'/img/loading.gif');
     };
 };

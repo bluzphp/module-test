@@ -15,6 +15,6 @@ use Bluz\Proxy\Logger;
 /**
  * @return void
  */
-return function() {
+return function () {
     Logger::info("Controller Bar");
 };

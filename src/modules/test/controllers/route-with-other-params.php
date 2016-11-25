@@ -17,7 +17,7 @@ use Bluz\Proxy\Request;
  * @param string $alias
  * @return false
  */
-return function($alias) {
+return function ($alias) {
     /**
      * @var Controller $this
      */

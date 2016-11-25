@@ -17,7 +17,7 @@ use Bluz\Controller\Controller;
  * @param int $a
  * @return void
  */
-return function($a = 0) {
+return function ($a = 0) {
     /**
      * @var Controller $this
      */

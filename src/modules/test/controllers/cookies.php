@@ -18,7 +18,7 @@ use Bluz\Proxy\Response;
 /**
  * @return void
  */
-return function() {
+return function () {
     /**
      * @var Controller $this
      */

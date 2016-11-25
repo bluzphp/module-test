@@ -20,7 +20,7 @@ use Bluz\Proxy\Layout;
  * @param  string $alias
  * @return string
  */
-return function($alias) {
+return function ($alias) {
     /**
      * @var Controller $this
      */

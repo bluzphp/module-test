@@ -20,7 +20,7 @@ use Bluz\Proxy\Request;
  * @param bool $messages
  * @return void
  */
-return function($messages = false) {
+return function ($messages = false) {
     /**
      * @var Controller $this
      */

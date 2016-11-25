@@ -19,7 +19,7 @@ use Bluz\Proxy\Request;
  * @param string $email
  * @return void
  */
-return function($email = "no-reply@nixsolutions.com") {
+return function ($email = "no-reply@nixsolutions.com") {
     /**
      * @var Controller $this
      */

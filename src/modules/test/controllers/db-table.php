@@ -16,7 +16,7 @@ use Bluz\Controller\Controller;
  * @TODO: need more informative example
  * @return bool
  */
-return function() {
+return function () {
     /**
      * @var Controller $this
      */

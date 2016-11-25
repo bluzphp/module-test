@@ -12,6 +12,6 @@ namespace Application;
 /**
  * @return false
  */
-return function() {
+return function () {
     return false;
 };
