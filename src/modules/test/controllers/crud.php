@@ -22,7 +22,7 @@ use Bluz\Controller\Mapper\Crud;
  * @accept HTML
  * @accept JSON
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */

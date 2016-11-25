@@ -17,48 +17,48 @@ use Bluz\Proxy\Layout;
 /**
  * @return array
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Events',
         ]
     );
 
     EventManager::attach(
         'testevent',
-        function (Event $event) {
+        function(Event $event) {
             return $event->getTarget()*2;
         }
     );
 
     EventManager::attach(
         'testevent',
-        function (Event $event) {
+        function(Event $event) {
             return $event->getTarget()*2;
         }
     );
 
     EventManager::attach(
         'testspace:event',
-        function (Event $event) {
+        function(Event $event) {
             return $event->getTarget()+4;
         }
     );
 
     EventManager::attach(
         'testspace:event',
-        function (Event $event) {
+        function(Event $event) {
             return $event->getTarget()+2;
         }
     );
 
     EventManager::attach(
         'testspace:event2',
-        function (Event $event) {
+        function(Event $event) {
             $event->setTarget($event->getTarget()+5);
             return false;
         }
@@ -66,14 +66,14 @@ return function () {
 
     EventManager::attach(
         'testspace:event2',
-        function (Event $event) {
-            echo "Never run". $event->getName();
+        function(Event $event) {
+            echo "Never run".$event->getName();
         }
     );
 
     EventManager::attach(
         'testspace',
-        function (Event $event) {
+        function(Event $event) {
             return $event->getTarget()+1;
         }
     );

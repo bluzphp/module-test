@@ -25,7 +25,7 @@ use Bluz\Controller\Mapper\Rest;
  * @return mixed
  * @throws ForbiddenException
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */

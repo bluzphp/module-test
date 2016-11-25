@@ -15,12 +15,12 @@ use Bluz\Proxy\Layout;
 /**
  * @return \closure
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */
     Layout::title('Test Module');
     Layout::title('Append', Layout::POS_APPEND);
     Layout::title('Prepend', Layout::POS_PREPEND);
-    Layout::breadCrumbs(['Test']);
+    Layout::breadCrumbs([ 'Test' ]);
 };

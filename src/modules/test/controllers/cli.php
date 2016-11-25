@@ -17,7 +17,7 @@ use Bluz\Controller\Controller;
  * @param bool $flag
  * @return array
  */
-return function ($flag = false) {
+return function($flag = false) {
     /**
      * @var Controller $this
      */
@@ -25,5 +25,5 @@ return function ($flag = false) {
         $this->assign('flag', 'true');
     }
 
-    return ['string' => 'bar', 'array' => ['some', 'array']];
+    return [ 'string' => 'bar', 'array' => [ 'some', 'array' ] ];
 };

@@ -15,7 +15,7 @@ use Bluz\Controller\Controller;
  * @return void
  * @throws \Exception
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */

@@ -16,7 +16,7 @@ namespace Application;
 /**
  * @return void
  */
-return function () {
+return function() {
     echo <<<LOREM
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
 lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque

@@ -17,9 +17,9 @@ use Bluz\Controller\Controller;
  * @param  bool $flag
  * @return array
  */
-return function ($flag = false) {
+return function($flag = false) {
     /**
      * @var Controller $this
      */
-    return ['string' => 'bar', 'array' => ['some', 'array'], 'flag' => $flag];
+    return [ 'string' => 'bar', 'array' => [ 'some', 'array' ], 'flag' => $flag ];
 };

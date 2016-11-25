@@ -14,10 +14,10 @@ use Bluz\Proxy\Layout;
 /**
  * @return void
  */
-return function () {
+return function() {
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Without view',
         ]
     );

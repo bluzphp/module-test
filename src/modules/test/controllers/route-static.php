@@ -18,13 +18,13 @@ use Bluz\Proxy\Request;
  * @route /another-route.html
  * @return false
  */
-return function () {
+return function() {
     /**
      * @var Controller $this
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', ['test', 'index']),
+            Layout::ahref('Test', [ 'test', 'index' ]),
             'Routers Examples',
         ]
     );
