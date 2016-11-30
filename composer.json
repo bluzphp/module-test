@@ -9,7 +9,8 @@
   "extra": {
     "bluz": {
       "module_name": "test",
-      "required_models": "test"
+      "required_models": "test",
+      "migration": "20161128115221"
     }
   }
 }
