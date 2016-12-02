@@ -1,5 +1,11 @@
 # Module test for Bluz Skeleton
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bluzphp/main)
+
+### Achievements
+
+[![Build Status](https://travis-ci.org/bluzphp/module-test.svg?branch=master)](https://travis-ci.org/bluzphp/module-test)
+
 Usage
 -------------------------
 ### Install module
@@ -11,8 +17,7 @@ To install the module run the command:
 Then you must enter the environment
 
 
-    Please, enter  your environment[dev, production, testing or another] dev
-
+    Please, enter your environment[dev, production, testing or another] dev
 
 
 If you use no-interaction mode, you must set an environment variable
@@ -44,5 +49,3 @@ If you use no-interaction mode, you must set an environment variable
     $ ENV=dev composer remove bluzphp/module-test -n
 
 
-
-    
