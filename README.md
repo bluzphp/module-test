@@ -5,6 +5,12 @@
 ### Achievements
 
 [![Build Status](https://travis-ci.org/bluzphp/module-test.svg?branch=master)](https://travis-ci.org/bluzphp/module-test)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bluzphp/module-test/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bluzphp/module-test/?branch=master)
+
+[![Latest Stable Version](https://poser.pugx.org/bluzphp/module-test/v/stable)](https://packagist.org/packages/bluzphp/module-test)
+[![Total Downloads](https://poser.pugx.org/bluzphp/module-test/downloads)](https://packagist.org/packages/bluzphp/module-test)
+
+[![License](https://poser.pugx.org/bluzphp/module-test/license)](https://packagist.org/packages/bluzphp/module-test)
 
 Usage
 -------------------------
