@@ -1,7 +1,14 @@
 <?php
+/**
+ * @copyright Bluz PHP Team
+ * @link https://github.com/bluzphp/skeleton
+ */
 
 use Phinx\Migration\AbstractMigration;
 
+/**
+ * CreateTestTable
+ */
 class CreateTestTable extends AbstractMigration
 {
     /**
