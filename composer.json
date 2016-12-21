@@ -4,6 +4,7 @@
   "license": "MIT",
   "description": "Test bluz module",
   "require": {
+    "bluzphp/skeleton": "~7.1",
     "bluzphp/composer-plugin": "~1.0"
   },
   "extra": {
