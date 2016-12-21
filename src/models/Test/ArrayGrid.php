@@ -10,6 +10,7 @@
 namespace Application\Test;
 
 use Bluz\Grid\Grid;
+use Bluz\Grid\Source\ArraySource;
 
 /**
  * Test Grid based on Array
@@ -28,8 +29,8 @@ class ArrayGrid extends Grid
      */
     public function init()
     {
-        // Array
-        $adapter = new \Bluz\Grid\Source\ArraySource();
+        // Source of grid
+        $adapter = new ArraySource();
         $adapter->setSource(
             [
                 [ 'id' => 1, 'name' => 'Foo', 'email' => 'a@bc.com', 'status' => 'active' ],

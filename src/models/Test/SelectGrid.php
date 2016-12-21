@@ -9,7 +9,9 @@
  */
 namespace Application\Test;
 
+use Bluz\Db\Query\Select;
 use Bluz\Grid\Grid;
+use Bluz\Grid\Source\SelectSource;
 
 /**
  * Test Grid based on SQL
@@ -28,10 +30,10 @@ class SelectGrid extends Grid
      */
     public function init()
     {
-        // Array
-        $adapter = new \Bluz\Grid\Source\SelectSource();
+        // Source of grid
+        $adapter = new SelectSource();
 
-        $select = new \Bluz\Db\Query\Select();
+        $select = new Select();
         $select->select('*')->from('test', 't');
 
         $adapter->setSource($select);

@@ -10,6 +10,7 @@
 namespace Application\Test;
 
 use Bluz\Grid\Grid;
+use Bluz\Grid\Source\SelectSource;
 
 /**
  * Test Grid based on SQL
@@ -28,8 +29,8 @@ class TableGrid extends Grid
      */
     public function init()
     {
-        // Array
-        $adapter = new \Bluz\Grid\Source\SelectSource();
+        // Source of grid
+        $adapter = new SelectSource();
 
         $select = Table::select();
 

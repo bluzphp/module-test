@@ -10,9 +10,10 @@
 namespace Application\Tests\Test;
 
 use Application\Tests\ControllerTestCase;
+use Bluz\Http\RequestMethod;
+use Bluz\Http\StatusCode;
 use Bluz\Proxy\Db;
 use Bluz\Proxy\Response;
-use Bluz\Proxy\Request;
 
 /**
  * @package  Application\Tests\Test
@@ -76,7 +77,7 @@ class RestTest extends ControllerTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->setupSuperUserIdentity();
+        self::setupSuperUserIdentity();
         $this->getApp()->useLayout(false);
         Response::setHeader('Content-Type', 'application/json');
     }
@@ -88,13 +89,13 @@ class RestTest extends ControllerTestCase
     {
         $this->dispatch('/test/rest/1');
 
-        $this->assertOk();
+        self::assertOk();
 
         /** @var \Application\Test\Row $row */
         $row = current(Response::getBody()->getData()->toArray());
 
 
-        $this->assertEquals($row->id, 1);
+        self::assertEquals($row->id, 1);
     }
 
     /**
@@ -104,9 +105,9 @@ class RestTest extends ControllerTestCase
     {
         $this->dispatch('/test/rest/', ['offset' => 0, 'limit' => 3]);
 
-        $this->assertResponseCode(206);
-        $this->assertEquals(sizeof(Response::getBody()->getData()->toArray()), 3);
-        $this->assertEquals(Response::getHeader('Content-Range'), 'items 0-3/45');
+        self::assertResponseCode(StatusCode::PARTIAL_CONTENT);
+        self::assertEquals(sizeof(Response::getBody()->getData()->toArray()), 3);
+        self::assertEquals(Response::getHeader('Content-Range'), 'items 0-3/45');
     }
 
     /**
@@ -117,7 +118,7 @@ class RestTest extends ControllerTestCase
         $this->dispatch(
             '/test/rest/',
             ['name' => 'Splinter', 'email' => 'splinter@turtles.org'],
-            Request::METHOD_POST
+            RequestMethod::POST
         );
 
         $primary = Db::fetchOne(
@@ -125,8 +126,8 @@ class RestTest extends ControllerTestCase
             ['Splinter']
         );
 
-        $this->assertResponseCode(201);
-        $this->assertEquals(Response::getHeader('Location'), '/test/rest/'.$primary);
+        self::assertResponseCode(StatusCode::CREATED);
+        self::assertEquals(Response::getHeader('Location'), '/test/rest/'.$primary);
     }
 
     /**
@@ -134,8 +135,8 @@ class RestTest extends ControllerTestCase
      */
     public function testCreateWithPrimaryError()
     {
-        $this->dispatch('/test/rest/1', [], Request::METHOD_POST);
-        $this->assertResponseCode(501);
+        $this->dispatch('/test/rest/1', [], RequestMethod::POST);
+        self::assertResponseCode(StatusCode::NOT_IMPLEMENTED);
     }
 
     /**
@@ -143,8 +144,8 @@ class RestTest extends ControllerTestCase
      */
     public function testCreateWithoutDataError()
     {
-        $this->dispatch('/test/rest/', [], Request::METHOD_POST);
-        $this->assertResponseCode(400);
+        $this->dispatch('/test/rest/', [], RequestMethod::POST);
+        self::assertResponseCode(StatusCode::BAD_REQUEST);
     }
 
     /**
@@ -155,12 +156,12 @@ class RestTest extends ControllerTestCase
         $this->dispatch(
             '/test/rest/',
             ['name' => '', 'email' => ''],
-            Request::METHOD_POST
+            RequestMethod::POST
         );
 
-        $this->assertNotNull(Response::getBody()->getData()->get('errors'));
-        $this->assertEquals(sizeof(Response::getBody()->getData()->get('errors')), 2);
-        $this->assertResponseCode(400);
+        self::assertNotNull(Response::getBody()->getData()->get('errors'));
+        self::assertEquals(sizeof(Response::getBody()->getData()->get('errors')), 2);
+        self::assertResponseCode(StatusCode::BAD_REQUEST);
     }
 
     /**
@@ -171,16 +172,16 @@ class RestTest extends ControllerTestCase
         $this->dispatch(
             '/test/rest/2',
             ['name' => 'Leonardo', 'email' => 'leonardo@turtles.ua'],
-            Request::METHOD_PUT
+            RequestMethod::PUT
         );
         ;
-        $this->assertOk();
+        self::assertOk();
 
         $id = Db::fetchOne(
             'SELECT `id` FROM `test` WHERE `email` = ?',
             ['leonardo@turtles.ua']
         );
-        $this->assertEquals($id, 2);
+        self::assertEquals($id, 2);
     }
 
     /**
@@ -195,19 +196,19 @@ class RestTest extends ControllerTestCase
                 ['id' => 3, 'name' => 'Michelangelo', 'email' => 'michelangelo@turtles.org.ua'],
                 ['id' => 4, 'name' => 'Raphael', 'email' => 'Raphael@turtles.org.ua'],
             ],
-            Request::METHOD_PUT
+            RequestMethod::PUT
         );
 
-        $this->assertResponseCode(501);
+        self::assertResponseCode(StatusCode::NOT_IMPLEMENTED);
 
         /*
-        $this->assertOk();
+        self::assertOk();
 
         $count = Db::fetchOne(
             'SELECT count(*) FROM `test` WHERE `email` LIKE(?)',
             ['%turtles.org.ua']
         );
-        $this->assertEquals($count, 2);
+        self::assertEquals($count, 2);
         */
     }
 
@@ -216,8 +217,8 @@ class RestTest extends ControllerTestCase
      */
     public function testUpdateWithSameData()
     {
-        $this->dispatch('/test/rest/1', ['name' => 'Donatello'], Request::METHOD_PUT);
-        $this->assertResponseCode(304);
+        $this->dispatch('/test/rest/1', ['name' => 'Donatello'], RequestMethod::PUT);
+        self::assertResponseCode(StatusCode::NOT_MODIFIED);
     }
 
     /**
@@ -225,8 +226,8 @@ class RestTest extends ControllerTestCase
      */
     public function testUpdateWithInvalidPrimary()
     {
-        $this->dispatch('/test/rest/100042', ['name' => 'Raphael'], Request::METHOD_PUT);
-        $this->assertResponseCode(404);
+        $this->dispatch('/test/rest/100042', ['name' => 'Raphael'], RequestMethod::PUT);
+        self::assertResponseCode(StatusCode::NOT_FOUND);
     }
 
     /**
@@ -234,8 +235,8 @@ class RestTest extends ControllerTestCase
      */
     public function testUpdateWithoutDataError()
     {
-        $this->dispatch('/test/rest/', [], Request::METHOD_PUT);
-        $this->assertResponseCode(400);
+        $this->dispatch('/test/rest/', [], RequestMethod::PUT);
+        self::assertResponseCode(StatusCode::BAD_REQUEST);
     }
 
     /**
@@ -243,14 +244,14 @@ class RestTest extends ControllerTestCase
      */
     public function testDelete()
     {
-        $this->dispatch('/test/rest/1', [], Request::METHOD_DELETE);
-        $this->assertResponseCode(204);
+        $this->dispatch('/test/rest/1', [], RequestMethod::DELETE);
+        self::assertResponseCode(StatusCode::NO_CONTENT);
 
         $count = Db::fetchOne(
             'SELECT count(*) FROM `test` WHERE `id` = ?',
             [1]
         );
-        $this->assertEquals($count, 0);
+        self::assertEquals($count, 0);
     }
 
     /**
@@ -258,8 +259,8 @@ class RestTest extends ControllerTestCase
      */
     public function testDeleteWithInvalidPrimary()
     {
-        $this->dispatch('/test/rest/100042', [], Request::METHOD_DELETE);
-        $this->assertResponseCode(404);
+        $this->dispatch('/test/rest/100042', [], RequestMethod::DELETE);
+        self::assertResponseCode(StatusCode::NOT_FOUND);
     }
 
     /**
@@ -274,18 +275,18 @@ class RestTest extends ControllerTestCase
                 ['id' => 3],
                 ['id' => 4],
             ],
-            Request::METHOD_DELETE
+            RequestMethod::DELETE
         );
 
-        $this->assertResponseCode(501);
+        self::assertResponseCode(StatusCode::NOT_IMPLEMENTED);
 
         /*
-        $this->assertOk();
+        self::assertOk();
 
         $count = Db::fetchOne(
             'SELECT count(*) FROM `test` WHERE `id` IN (3,4)'
         );
-        $this->assertEquals($count, 0);
+        self::assertEquals($count, 0);
         */
     }
 }

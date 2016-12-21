@@ -10,6 +10,7 @@
 namespace Application\Test;
 
 use Bluz\Grid\Grid;
+use Bluz\Grid\Source\SqlSource;
 
 /**
  * Test Grid based on SQL
@@ -28,8 +29,8 @@ class SqlGrid extends Grid
      */
     public function init()
     {
-        // Array
-        $adapter = new \Bluz\Grid\Source\SqlSource();
+        // Source of grid
+        $adapter = new SqlSource();
         $adapter->setSource('SELECT * FROM test');
 
         $this->setAdapter($adapter);

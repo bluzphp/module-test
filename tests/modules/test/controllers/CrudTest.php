@@ -10,9 +10,10 @@
 namespace Application\Tests\Test;
 
 use Application\Tests\ControllerTestCase;
+use Bluz\Http\RequestMethod;
+use Bluz\Http\StatusCode;
 use Bluz\Proxy\Db;
 use Bluz\Proxy\Response;
-use Bluz\Proxy\Request;
 
 /**
  * @package  Application\Tests\Test
@@ -76,7 +77,7 @@ class CrudTest extends ControllerTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->setupSuperUserIdentity();
+        self::setupSuperUserIdentity();
         $this->getApp()->useLayout(false);
     }
 
@@ -86,8 +87,8 @@ class CrudTest extends ControllerTestCase
     public function testCreateForm()
     {
         $this->dispatch('/test/crud/');
-        $this->assertOk();
-        $this->assertQueryCount('form[method="POST"]', 1);
+        self::assertOk();
+        self::assertQueryCount('form[method="POST"]', 1);
     }
 
     /**
@@ -96,10 +97,10 @@ class CrudTest extends ControllerTestCase
     public function testEditForm()
     {
         $this->dispatch('/test/crud/', ['id' => 1]);
-        $this->assertOk();
 
-        $this->assertQueryCount('form[method="PUT"]', 1);
-        $this->assertQueryCount('input[name="id"][value="1"]', 1);
+        self::assertOk();
+        self::assertQueryCount('form[method="PUT"]', 1);
+        self::assertQueryCount('input[name="id"][value="1"]', 1);
     }
 
     /**
@@ -108,7 +109,8 @@ class CrudTest extends ControllerTestCase
     public function testEditFormError()
     {
         $this->dispatch('/test/crud/', ['id' => 100042]);
-        $this->assertResponseCode(404);
+
+        self::assertResponseCode(StatusCode::NOT_FOUND);
     }
 
     /**
@@ -119,15 +121,15 @@ class CrudTest extends ControllerTestCase
         $this->dispatch(
             '/test/crud/',
             ['name' => 'Splinter', 'email' => 'splinter@turtles.org'],
-            Request::METHOD_POST
+            RequestMethod::POST
         );
-        $this->assertOk();
+        self::assertOk();
 
         $count = Db::fetchOne(
             'SELECT count(*) FROM `test` WHERE `name` = ?',
             ['Splinter']
         );
-        $this->assertEquals($count, 1);
+        self::assertEquals($count, 1);
     }
 
     /**
@@ -138,12 +140,12 @@ class CrudTest extends ControllerTestCase
         $this->dispatch(
             '/test/crud/',
             ['name' => '', 'email' => ''],
-            Request::METHOD_POST
+            RequestMethod::POST
         );
 
-        $this->assertNotNull(Response::getBody()->getData()->get('errors'));
-        $this->assertEquals(sizeof(Response::getBody()->getData()->get('errors')), 2);
-        $this->assertOk();
+        self::assertNotNull(Response::getBody()->getData()->get('errors'));
+        self::assertEquals(sizeof(Response::getBody()->getData()->get('errors')), 2);
+        self::assertOk();
     }
 
     /**
@@ -154,16 +156,16 @@ class CrudTest extends ControllerTestCase
         $this->dispatch(
             '/test/crud/',
             ['id' => 2, 'name' => 'Leonardo', 'email' => 'leonardo@turtles.ua'],
-            Request::METHOD_PUT
+            RequestMethod::PUT
         );
         ;
-        $this->assertOk();
+        self::assertOk();
 
         $id = Db::fetchOne(
             'SELECT `id` FROM `test` WHERE `email` = ?',
             ['leonardo@turtles.ua']
         );
-        $this->assertEquals($id, 2);
+        self::assertEquals($id, 2);
     }
 
     /**
@@ -174,12 +176,12 @@ class CrudTest extends ControllerTestCase
         $this->dispatch(
             '/test/crud/',
             ['id' => 2, 'name' => '123456', 'email' => 'leonardo[at]turtles.ua'],
-            Request::METHOD_PUT
+            RequestMethod::PUT
         );
         ;
-        $this->assertNotNull(Response::getBody()->getData()->get('errors'));
-        $this->assertEquals(sizeof(Response::getBody()->getData()->get('errors')), 2);
-        $this->assertOk();
+        self::assertNotNull(Response::getBody()->getData()->get('errors'));
+        self::assertEquals(sizeof(Response::getBody()->getData()->get('errors')), 2);
+        self::assertOk();
     }
 
     /**
@@ -190,15 +192,15 @@ class CrudTest extends ControllerTestCase
         $this->dispatch(
             '/test/crud/',
             ['id' => 3],
-            Request::METHOD_DELETE
+            RequestMethod::DELETE
         );
-        $this->assertOk();
+        self::assertOk();
 
         $count = Db::fetchOne(
             'SELECT count(*) FROM `test` WHERE `email` = ?',
             ['michelangelo@turtles.org']
         );
-        $this->assertEquals($count, 0);
+        self::assertEquals($count, 0);
     }
 
     /**
@@ -209,9 +211,9 @@ class CrudTest extends ControllerTestCase
         $this->dispatch(
             '/test/crud/',
             ['id' => 100042],
-            Request::METHOD_DELETE
+            RequestMethod::DELETE
         );
 
-        $this->assertResponseCode(404);
+        self::assertResponseCode(StatusCode::NOT_FOUND);
     }
 }

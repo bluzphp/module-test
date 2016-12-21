@@ -24,6 +24,6 @@ class DbTest extends ControllerTestCase
     public function testControllerPage()
     {
         $this->dispatch('/test/db/');
-        $this->assertOk();
+        self::assertOk();
     }
 }
