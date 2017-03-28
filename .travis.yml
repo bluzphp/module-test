@@ -31,8 +31,8 @@ script:
   # CodeCeption
   - php codecept.phar run -g module-test
   # Newman run
-  - newman -k -c tests/postman/collection.json -e tests/postman/environment.json -x -t .reports/newman.xml -O .reports/newman.log
-  - newman -k -c tests/postman/test/collection.json -e tests/postman/test/environment.json -x -t .reports/newman.xml -O .reports/newman.log
+  - newman run tests/postman/collection.json -e tests/postman/environment.json
+  - newman run tests/postman/test/collection.json -e tests/postman/test/environment.json
 notifications:
   email: false
   webhooks:
