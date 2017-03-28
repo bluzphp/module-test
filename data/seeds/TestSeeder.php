@@ -26,5 +26,22 @@ class TestSeeder extends AbstractSeed
         }
 
         $this->insert('test', $data);
+
+
+        $auth = [
+            [
+                'userId' => 2,
+                'provider' => 'token',
+                'foreignKey' => 'admin',
+                'token' => '$2y$10$wkZxb1sp8TsRXNL2s5KjGuFD58hGJQy4oyihm8xo7OBtV2uH7hQUu',
+                'tokenSecret' => 'c8ab812795bb6a2784e30527d5b167fc',
+                'tokenType' => 'access',
+                'created' => '2015-01-01 00:00:00',
+                'updated' => '2015-01-01 00:00:00',
+                'expired' => '2025-01-01 00:00:00',
+            ]
+        ];
+        $this->insert('auth', $auth);
+
     }
 }
