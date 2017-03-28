@@ -16,6 +16,8 @@ use Bluz\Proxy\Db;
 use Bluz\Proxy\Response;
 
 /**
+ * @group    module-test
+ *
  * @package  Application\Tests\Test
  * @author   Anton Shevchuk
  * @created  21.05.14 11:28
@@ -29,7 +31,7 @@ class RestTest extends ControllerTestCase
     {
         Db::insert('test')->setArray(
             [
-                'id' => 1,
+                'id' => 1001,
                 'name' => 'Donatello',
                 'email' => 'donatello@turtles.org'
             ]
@@ -37,7 +39,7 @@ class RestTest extends ControllerTestCase
 
         Db::insert('test')->setArray(
             [
-                'id' => 2,
+                'id' => 1002,
                 'name' => 'Leonardo',
                 'email' => 'leonardo@turtles.org'
             ]
@@ -45,7 +47,7 @@ class RestTest extends ControllerTestCase
 
         Db::insert('test')->setArray(
             [
-                'id' => 3,
+                'id' => 1003,
                 'name' => 'Michelangelo',
                 'email' => 'michelangelo@turtles.org'
             ]
@@ -53,7 +55,7 @@ class RestTest extends ControllerTestCase
 
         Db::insert('test')->setArray(
             [
-                'id' => 4,
+                'id' => 1004,
                 'name' => 'Raphael',
                 'email' => 'raphael@turtles.org'
             ]
@@ -65,7 +67,7 @@ class RestTest extends ControllerTestCase
      */
     public static function tearDownAfterClass()
     {
-        Db::delete('test')->where('id IN (?)', [1,2,3,4])->execute();
+        Db::delete('test')->where('id IN (?)', [1001,1002,1003,1004])->execute();
         Db::delete('test')->where('email = ?', 'splinter@turtles.org')->execute();
     }
 
@@ -87,7 +89,7 @@ class RestTest extends ControllerTestCase
      */
     public function testReadOne()
     {
-        $this->dispatch('/test/rest/1');
+        $this->dispatch('/test/rest/1001');
 
         self::assertOk();
 
@@ -107,7 +109,7 @@ class RestTest extends ControllerTestCase
 
         self::assertResponseCode(StatusCode::PARTIAL_CONTENT);
         self::assertEquals(sizeof(Response::getBody()->getData()->toArray()), 3);
-        self::assertEquals(Response::getHeader('Content-Range'), 'items 0-3/45');
+        self::assertEquals(Response::getHeader('Content-Range'), 'items 0-3/104');
     }
 
     /**
@@ -135,7 +137,7 @@ class RestTest extends ControllerTestCase
      */
     public function testCreateWithPrimaryError()
     {
-        $this->dispatch('/test/rest/1', [], RequestMethod::POST);
+        $this->dispatch('/test/rest/1001', [], RequestMethod::POST);
         self::assertResponseCode(StatusCode::NOT_IMPLEMENTED);
     }
 
@@ -170,7 +172,7 @@ class RestTest extends ControllerTestCase
     public function testUpdate()
     {
         $this->dispatch(
-            '/test/rest/2',
+            '/test/rest/1002',
             ['name' => 'Leonardo', 'email' => 'leonardo@turtles.ua'],
             RequestMethod::PUT
         );
@@ -193,8 +195,8 @@ class RestTest extends ControllerTestCase
         $this->dispatch(
             '/test/rest/',
             [
-                ['id' => 3, 'name' => 'Michelangelo', 'email' => 'michelangelo@turtles.org.ua'],
-                ['id' => 4, 'name' => 'Raphael', 'email' => 'Raphael@turtles.org.ua'],
+                ['id' => 1003, 'name' => 'Michelangelo', 'email' => 'michelangelo@turtles.org.ua'],
+                ['id' => 1004, 'name' => 'Raphael', 'email' => 'Raphael@turtles.org.ua'],
             ],
             RequestMethod::PUT
         );
@@ -217,7 +219,7 @@ class RestTest extends ControllerTestCase
      */
     public function testUpdateWithSameData()
     {
-        $this->dispatch('/test/rest/1', ['name' => 'Donatello'], RequestMethod::PUT);
+        $this->dispatch('/test/rest/1001', ['name' => 'Donatello'], RequestMethod::PUT);
         self::assertResponseCode(StatusCode::NOT_MODIFIED);
     }
 
@@ -244,7 +246,7 @@ class RestTest extends ControllerTestCase
      */
     public function testDelete()
     {
-        $this->dispatch('/test/rest/1', [], RequestMethod::DELETE);
+        $this->dispatch('/test/rest/1001', [], RequestMethod::DELETE);
         self::assertResponseCode(StatusCode::NO_CONTENT);
 
         $count = Db::fetchOne(
@@ -272,8 +274,8 @@ class RestTest extends ControllerTestCase
         $this->dispatch(
             '/test/rest/',
             [
-                ['id' => 3],
-                ['id' => 4],
+                ['id' => 1003],
+                ['id' => 1004],
             ],
             RequestMethod::DELETE
         );

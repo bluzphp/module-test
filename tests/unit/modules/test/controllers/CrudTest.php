@@ -16,6 +16,8 @@ use Bluz\Proxy\Db;
 use Bluz\Proxy\Response;
 
 /**
+ * @group    module-test
+ *
  * @package  Application\Tests\Test
  * @author   Anton Shevchuk
  * @created  21.05.14 11:28
@@ -29,7 +31,7 @@ class CrudTest extends ControllerTestCase
     {
         Db::insert('test')->setArray(
             [
-                'id' => 1,
+                'id' => 1001,
                 'name' => 'Donatello',
                 'email' => 'donatello@turtles.org'
             ]
@@ -37,7 +39,7 @@ class CrudTest extends ControllerTestCase
 
         Db::insert('test')->setArray(
             [
-                'id' => 2,
+                'id' => 1002,
                 'name' => 'Leonardo',
                 'email' => 'leonardo@turtles.org'
             ]
@@ -45,7 +47,7 @@ class CrudTest extends ControllerTestCase
 
         Db::insert('test')->setArray(
             [
-                'id' => 3,
+                'id' => 1003,
                 'name' => 'Michelangelo',
                 'email' => 'michelangelo@turtles.org'
             ]
@@ -53,7 +55,7 @@ class CrudTest extends ControllerTestCase
 
         Db::insert('test')->setArray(
             [
-                'id' => 4,
+                'id' => 1004,
                 'name' => 'Raphael',
                 'email' => 'raphael@turtles.org'
             ]
@@ -65,7 +67,7 @@ class CrudTest extends ControllerTestCase
      */
     public static function tearDownAfterClass()
     {
-        Db::delete('test')->where('id IN (?)', [1,2,3,4])->execute();
+        Db::delete('test')->where('id IN (?)', [1001,1002,1003,1004])->execute();
         Db::delete('test')->where('email = ?', 'splinter@turtles.org')->execute();
     }
 
@@ -96,7 +98,7 @@ class CrudTest extends ControllerTestCase
      */
     public function testEditForm()
     {
-        $this->dispatch('/test/crud/', ['id' => 1]);
+        $this->dispatch('/test/crud/', ['id' => 1001]);
 
         self::assertOk();
         self::assertQueryCount('form[method="PUT"]', 1);
@@ -155,7 +157,7 @@ class CrudTest extends ControllerTestCase
     {
         $this->dispatch(
             '/test/crud/',
-            ['id' => 2, 'name' => 'Leonardo', 'email' => 'leonardo@turtles.ua'],
+            ['id' => 1002, 'name' => 'Leonardo', 'email' => 'leonardo@turtles.ua'],
             RequestMethod::PUT
         );
         ;
@@ -175,7 +177,7 @@ class CrudTest extends ControllerTestCase
     {
         $this->dispatch(
             '/test/crud/',
-            ['id' => 2, 'name' => '123456', 'email' => 'leonardo[at]turtles.ua'],
+            ['id' => 1002, 'name' => '123456', 'email' => 'leonardo[at]turtles.ua'],
             RequestMethod::PUT
         );
         ;
@@ -191,7 +193,7 @@ class CrudTest extends ControllerTestCase
     {
         $this->dispatch(
             '/test/crud/',
-            ['id' => 3],
+            ['id' => 1003],
             RequestMethod::DELETE
         );
         self::assertOk();

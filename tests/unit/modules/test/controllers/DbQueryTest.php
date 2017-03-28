@@ -12,6 +12,8 @@ namespace Application\Tests\Test;
 use Application\Tests\ControllerTestCase;
 
 /**
+ * @group    module-test
+ *
  * @package  Application\Tests\Test
  * @author   Anton Shevchuk
  * @created  26.05.14 12:37
