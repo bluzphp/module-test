@@ -31,7 +31,6 @@ script:
   # CodeCeption
   - php codecept.phar run -g module-test
   # Newman run
-  - newman run tests/postman/collection.json -e tests/postman/environment.json
   - newman run tests/postman/test/collection.json -e tests/postman/test/environment.json
 notifications:
   email: false

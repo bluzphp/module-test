@@ -52,6 +52,11 @@ class CreateTestTable extends AbstractMigration
             [
                 'roleId' => 2,
                 'module' => 'test',
+                'privilege' => 'Read'
+            ],
+            [
+                'roleId' => 2,
+                'module' => 'test',
                 'privilege' => 'Update'
             ],
             [
