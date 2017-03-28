@@ -25,10 +25,16 @@ use Bluz\Proxy\Response;
 class CrudTest extends ControllerTestCase
 {
     /**
-     * Setup `test` table before the first test
+     * Setup environment before run every test
+     *
+     * @return void
      */
-    public static function setUpBeforeClass()
+    public function setUp()
     {
+        parent::setUp();
+        self::setupSuperUserIdentity();
+        $this->getApp()->useLayout(false);
+
         Db::insert('test')->setArray(
             [
                 'id' => 1001,
@@ -63,24 +69,13 @@ class CrudTest extends ControllerTestCase
     }
 
     /**
-     * Drop `test` table after the last test
+     * Tear down environment
      */
-    public static function tearDownAfterClass()
+    public function tearDown()
     {
-        Db::delete('test')->where('id IN (?)', [1001,1002,1003,1004])->execute();
-        Db::delete('test')->where('email = ?', 'splinter@turtles.org')->execute();
-    }
+        parent::tearDown();
 
-    /**
-     * setUp
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        self::setupSuperUserIdentity();
-        $this->getApp()->useLayout(false);
+        Db::delete('test')->where('id > ?', 1000)->execute();
     }
 
     /**
@@ -102,7 +97,7 @@ class CrudTest extends ControllerTestCase
 
         self::assertOk();
         self::assertQueryCount('form[method="PUT"]', 1);
-        self::assertQueryCount('input[name="id"][value="1"]', 1);
+        self::assertQueryCount('input[name="id"][value="1001"]', 1);
     }
 
     /**
@@ -167,7 +162,7 @@ class CrudTest extends ControllerTestCase
             'SELECT `id` FROM `test` WHERE `email` = ?',
             ['leonardo@turtles.ua']
         );
-        self::assertEquals($id, 2);
+        self::assertEquals($id, 1002);
     }
 
     /**

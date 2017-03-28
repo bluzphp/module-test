@@ -25,10 +25,17 @@ use Bluz\Proxy\Response;
 class RestTest extends ControllerTestCase
 {
     /**
-     * Setup `test` table before the first test
+     * setUp
+     *
+     * @return void
      */
-    public static function setUpBeforeClass()
+    public function setUp()
     {
+        parent::setUp();
+        self::setupSuperUserIdentity();
+        $this->getApp()->useLayout(false);
+        Response::setHeader('Content-Type', 'application/json');
+
         Db::insert('test')->setArray(
             [
                 'id' => 1001,
@@ -63,28 +70,6 @@ class RestTest extends ControllerTestCase
     }
 
     /**
-     * Drop `test` table after the last test
-     */
-    public static function tearDownAfterClass()
-    {
-        Db::delete('test')->where('id IN (?)', [1001,1002,1003,1004])->execute();
-        Db::delete('test')->where('email = ?', 'splinter@turtles.org')->execute();
-    }
-
-    /**
-     * setUp
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        self::setupSuperUserIdentity();
-        $this->getApp()->useLayout(false);
-        Response::setHeader('Content-Type', 'application/json');
-    }
-
-    /**
      * GET request with PRIMARY should return one record
      */
     public function testReadOne()
@@ -98,6 +83,16 @@ class RestTest extends ControllerTestCase
 
 
         self::assertEquals($row->id, 1001);
+    }
+
+    /**
+     * Tear down environment
+     */
+    public function tearDown()
+    {
+        parent::tearDown();
+
+        Db::delete('test')->where('id > ?', 1000)->execute();
     }
 
     /**
@@ -183,7 +178,7 @@ class RestTest extends ControllerTestCase
             'SELECT `id` FROM `test` WHERE `email` = ?',
             ['leonardo@turtles.ua']
         );
-        self::assertEquals($id, 2);
+        self::assertEquals($id, 1002);
     }
 
     /**
@@ -251,7 +246,7 @@ class RestTest extends ControllerTestCase
 
         $count = Db::fetchOne(
             'SELECT count(*) FROM `test` WHERE `id` = ?',
-            [1]
+            [1001]
         );
         self::assertEquals($count, 0);
     }
