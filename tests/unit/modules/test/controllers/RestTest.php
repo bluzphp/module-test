@@ -97,7 +97,7 @@ class RestTest extends ControllerTestCase
         $row = current(Response::getBody()->getData()->toArray());
 
 
-        self::assertEquals($row->id, 1);
+        self::assertEquals($row->id, 1001);
     }
 
     /**
