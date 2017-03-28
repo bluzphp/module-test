@@ -18,10 +18,10 @@ class TestSeeder extends AbstractSeed
         $data = [];
         for ($i = 0; $i < 100; $i++) {
             $data[] = [
-                'username'      => $faker->userName,
-                'email'         => $faker->email,
-                'status'        => array_rand(['active' => 1, 'disable' => 2, 'delete' => 3]),
-                'created'       => date('Y-m-d H:i:s'),
+                'name'    => $faker->userName,
+                'email'   => $faker->email,
+                'status'  => array_rand(['active' => 1, 'disable' => 2, 'delete' => 3]),
+                'created' => date('Y-m-d H:i:s'),
             ];
         }
 
