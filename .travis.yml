@@ -23,7 +23,6 @@ before_script:
   # Codeception
   - wget http://codeception.com/codecept.phar
 script:
-  - mkdir .reports
   # Code style
   - php vendor/bin/phpcs ./application --standard=PSR1,PSR2 --encoding=utf-8 --ignore=./application/_loader.php
   # WebServer run
