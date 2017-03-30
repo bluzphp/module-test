@@ -9,7 +9,7 @@ use Phinx\Migration\AbstractMigration;
 /**
  * CreateTestTable
  */
-class CreateTestTable extends AbstractMigration
+class ModuleTest extends AbstractMigration
 {
 
     /**
