@@ -22,7 +22,7 @@ use Bluz\Validator\Validator as v;
  * @property string $email
  * @property string $status enum('active','disable','delete')
  *
- * @SWG\Definition(definition="test", title="Test", required={"id", "name", "email"})
+ * @SWG\Definition(definition="test", title="test", required={"id", "name", "email"})
  * @SWG\Property(property="id", type="integer")
  * @SWG\Property(property="name", type="string")
  * @SWG\Property(property="email", type="string")
