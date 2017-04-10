@@ -5,13 +5,14 @@ php:
 before_install:
   - nvm install stable
   - npm update -g npm
+  - phpenv config-rm xdebug.ini
 install:
   # Composer
   - composer self-update
   - composer create-project bluzphp/skeleton --stability=dev
   - cd skeleton
   # Require current module
-  - composer require bluzphp/module-test:dev-TRAVIS_BRANCH
+  - composer require bluzphp/module-test:dev-$TRAVIS_BRANCH
   # Database
   - mysql -e 'CREATE DATABASE bluz;'
   # Migrations
