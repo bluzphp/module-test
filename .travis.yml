@@ -11,7 +11,7 @@ install:
   - composer create-project bluzphp/skeleton --stability=dev
   - cd skeleton
   # Require current module
-  - composer require bluzphp/module-test:dev-master
+  - composer require bluzphp/module-test:dev-TRAVIS_BRANCH
   # Database
   - mysql -e 'CREATE DATABASE bluz;'
   # Migrations
