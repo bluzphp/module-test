@@ -2,35 +2,36 @@ language: php
 php:
   - 7.0
   - 7.1
+env:
+  - BLUZ_MODULE=test
 before_install:
   - nvm install stable
   - npm update -g npm
+  - phpenv config-rm xdebug.ini
 install:
+  # Newman
+  - npm install -g newman
   # Composer
   - composer self-update
   - composer create-project bluzphp/skeleton --stability=dev
+  # Require current module
+  - cd skeleton
+  - composer require bluzphp/module-$BLUZ_MODULE:dev-$TRAVIS_BRANCH
+before_script:
   # Database
   - mysql -e 'CREATE DATABASE bluz;'
-  - cd skeleton
-  # Require current module
-  - composer require bluzphp/module-test:dev-master
   # Migrations
-  - vendor/bin/phinx migrate -e default
-  - vendor/bin/phinx seed:run
-before_script:
-  # Newman
-  - npm install -g newman
-  # Codeception
-  - wget http://codeception.com/codecept.phar
+  - php vendor/bin/bluzman db:migrate
+  - php vendor/bin/bluzman db:seed:run
 script:
-  # Code style
+  # Check code style
   - php vendor/bin/phpcs ./application --standard=PSR1,PSR2 --encoding=utf-8 --ignore=./application/_loader.php
-  # WebServer run
-  - nohup bash -c "php -S 127.0.0.1:8000 -t ./public/ ./public/routing.php 2>&1 &" && sleep 1; cat nohup.out
-  # CodeCeption
-  - php codecept.phar run -g module-test
-  # Newman run
-  - newman run tests/postman/test/collection.json -e tests/postman/test/environment.json
+  # Run built-in web-server
+  - php vendor/bin/bluzman server:start --host 127.0.0.1 -b
+  # Run CodeCeption tests
+  - php vendor/bin/bluzman test module-$BLUZ_MODULE
+  # Run postman/newman tests
+  - newman run tests/postman/$BLUZ_MODULE/collection.json -e tests/postman/$BLUZ_MODULE/environment.json
 notifications:
   email: false
   webhooks:
