@@ -1,0 +1,48 @@
+<?php
+use Application\Pages;
+use Bluz\Proxy\Db;
+
+?>
+<h3>Example of usage DB methods</h3>
+<p class="text-warning">Please, never use <code>DB</code> adapter inside <code>View</code></p>
+
+<h3>Page Owner</h3>
+<code>
+Pages\Table::findRow(1)->getRelation('Users');
+</code>
+<?php
+$user = Pages\Table::findRow(1)->getRelation('Users');
+var_dump($user);
+?>
+
+<h3>User pages</h3>
+<code>
+$user->getRelations('Pages');
+</code>
+<?php
+$pages = $user->getRelations('Pages');
+var_dump($pages);
+?>
+
+<h3>User roles</h3>
+<code>
+$user->getRelations('Roles');
+</code>
+<?php
+$roles = $user->getRelations('Roles');
+var_dump($roles);
+?>
+
+<h3>User - Page relation</h3>
+<code>
+Db::fetchRelations(
+"SELECT '__users', u.*, '__pages', p.* FROM users u LEFT JOIN pages p ON p.userId = u.id"
+);
+</code>
+
+<?php
+$result = Db::fetchRelations(
+    "SELECT '__users', u.*, '__pages', p.* FROM users u LEFT JOIN pages p ON p.userId = u.id"
+);
+var_dump($result);
+?>

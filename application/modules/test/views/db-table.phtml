@@ -1,0 +1,36 @@
+<?php
+use Application\Test;
+use Application\Users;
+?>
+<h3>Example of usage DB methods</h3>
+<p class="text-warning">Please, never use <code>DB</code> adapter inside <code>View</code></p>
+
+<h3>Page Owner</h3>
+<pre>
+<code>
+$table = Test\Table::getInstance();
+
+var_dump($table->saveTestRow());
+var_dump($table->updateTestRows());
+var_dump($table->deleteTestRows());
+
+$table = Users\Table::getInstance();
+
+var_dump($table->getColumns());
+var_dump($table->findRow([ '1' ]));
+var_dump($table->findRowWhere([ 'id' => '0' ]));
+</code>
+</pre>
+<?php
+$table = Test\Table::getInstance();
+
+var_dump($table->saveTestRow());
+var_dump($table->updateTestRows());
+var_dump($table->deleteTestRows());
+
+$table = Users\Table::getInstance();
+
+var_dump($table->getColumns());
+var_dump($table->findRow([ '1' ]));
+var_dump($table->findRowWhere([ 'id' => '0' ]));
+?>
