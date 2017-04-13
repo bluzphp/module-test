@@ -10,7 +10,7 @@
 namespace Application;
 
 use Bluz\Controller\Controller;
-use Bluz\Controller\Reflection;
+use Bluz\Controller\Meta;
 use Bluz\Proxy\Layout;
 
 /**
@@ -33,7 +33,7 @@ return function ($id = 0, $other = "default value") {
         ]
     );
 
-    $reflection = new Reflection(__FILE__);
+    $reflection = new Meta(__FILE__);
     $reflection->process();
 
     return [
