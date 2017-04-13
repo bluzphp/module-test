@@ -17,10 +17,10 @@ use Bluz\Proxy\Request;
  * @route /test/param/$
  * @route /test/param/{$a}/
  *
- * @param int $a
+ * @param string $a
  * @return false
  */
-return function ($a = 42) {
+return function ($a = '42') {
     /**
      * @var Controller $this
      */
@@ -39,6 +39,7 @@ return function ($a = 42) {
 <h4>Route: $module/$controller</h4>
 <pre>
 /**
+ * @route /test/param/
  * @route /test/param/{\$a}/
  * @param string \$a
  * @return closure

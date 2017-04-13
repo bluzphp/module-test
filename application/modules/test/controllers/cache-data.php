@@ -42,9 +42,9 @@ return function ($id = null) {
     /**
      * @var Users\Row $userRow
      */
-    if (!$userRow = Cache::get('user:'.$id)) {
+    if (!$userRow = Cache::get('user.'.$id)) {
         $userRow = Users\Table::findRow($id);
-        Cache::set('user:'.$id, $userRow, 30);
+        Cache::set('user.'.$id, $userRow, 30);
     };
 
     if (!$userRow) {

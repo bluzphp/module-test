@@ -71,8 +71,8 @@ $this->headScript($this->baseUrl('js/test/config.js'));
 
 <h3>CLI</h3>
 <p>
-For test CLI you can run <code>`php ./bin/cli.php --uri 'test/cli' --env='dev'`</code>.
-You can find source code at <code>`application/modules/test/controllers/cli.php`</code>
+For test CLI you can run <code>php ./vendor/bin/bluzman run test/cli --env dev</code>.<br/>
+You can find source code at <code>application/modules/test/controllers/cli.php</code>
 </p>
 
 <h3>Packages</h3>
@@ -98,6 +98,7 @@ You can find source code at <code>`application/modules/test/controllers/cli.php`
     <li><?= $this->ahref('View Form Helpers', ['test', 'view-helpers']);?></li>
 </ul>
 <hr/>
+<p>Required to install options module, just run <code>php ./vendor/bin/bluzman module:install options</code></p>
 <ul>
     <li><?= $this->ahref('Options', ['test', 'options']) ?> &mdash; example of usage module Options from another module</li>
 </ul>
@@ -118,17 +119,17 @@ You can find source code at <code>`application/modules/test/controllers/cli.php`
 <hr/>
 <p>Example of JavaScript:</p>
 <pre>
-    require(["jquery", "bluz.notify"], function($, notify) {
-        $(function(){
-            $('#ajax-callback')
-                .on('success.ajax.bluz', function(event, data, textStatus, jqXHR){
-                    notify.addSuccess("Event `success.ajax.bluz` is fired")
-                })
-                .on('error.ajax.bluz', function(event, jqXHR, textStatus, errorThrown){
-                    notify.addSuccess("Event `error.ajax.bluz` is fired")
-                });
-        });
+require(["jquery", "bluz.notify"], function($, notify) {
+    $(function(){
+        $('#ajax-callback')
+            .on('success.ajax.bluz', function(event, data, textStatus, jqXHR){
+                notify.addSuccess("Event `success.ajax.bluz` is fired")
+            })
+            .on('error.ajax.bluz', function(event, jqXHR, textStatus, errorThrown){
+                notify.addSuccess("Event `error.ajax.bluz` is fired")
+            });
     });
+});
 </pre>
 <script>
     require(["jquery", "bluz.notify"], function($, notify) {
