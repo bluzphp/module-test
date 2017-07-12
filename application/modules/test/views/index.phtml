@@ -1,9 +1,9 @@
 <?php
-$this->headScript($this->baseUrl('js/test/config.js'));
 /**
  * @var \Application\Users\Row $user
  * @var \Bluz\View\View $this
  */
+$this->headScript($this->baseUrl('js/test/config.js'));
 ?>
 
 <h3>Hello, <?=$this->username()?></h3>
@@ -41,25 +41,24 @@ $this->headScript($this->baseUrl('js/test/config.js'));
     <br/>
     <br/>
     <div class="btn-group">
-        <?= $this->ahref('<span class="badge">1</span> POST Create Record', ['test', 'rest-post'], ['class'=>'ajax btn btn-primary', 'data-ajax-method'=>'POST', 'data-name'=> 'Name', 'data-email'=> 'email@bluz.com']);?>
-        <?= $this->ahref('<span class="badge">2</span> PUT Edit Record', 'test/rest-put/10', ['class'=>'ajax btn btn-success', 'data-ajax-method'=>'PUT', 'data-name'=> 'New Name']);?>
-        <?= $this->ahref('<span class="badge">3</span> DELETE Record', 'test/rest-delete/10', ['class'=>'ajax btn btn-danger', 'data-ajax-method'=>'DELETE']);?>
+        <?= $this->ahref('<span class="badge">1</span> POST Create Record', ['test', 'rest'], ['class'=>'ajax btn btn-primary', 'data-ajax-method'=>'POST', 'data-name'=> 'Name', 'data-email'=> 'email@bluz.com']);?>
+        <?= $this->ahref('<span class="badge">2</span> PUT Edit Record', 'test/rest/10', ['class'=>'ajax btn btn-success', 'data-ajax-method'=>'PUT', 'data-name'=> 'New Name']);?>
+        <?= $this->ahref('<span class="badge">3</span> DELETE Record', 'test/rest/10', ['class'=>'ajax btn btn-danger', 'data-ajax-method'=>'DELETE']);?>
     </div>
 </div>
 <script>
     require(["jquery", "bluz.notify"], function($, notify) {
         $(function(){
-            $('#rest')
+            let $rest = $('#rest');
+            $rest
                 .on('success.ajax.bluz', function(event, data, textStatus, jqXHR){
                     console.log(data);
-
                     // check correct creation
                     if (jqXHR.getResponseHeader('Location')) {
-                        var partial = jqXHR.getResponseHeader('Location').split('/');
-                        $('#rest a[data-ajax-method=PUT]').attr('href', 'test/rest-put/'+partial[3]);
-                        $('#rest a[data-ajax-method=DELETE]').attr('href', 'test/rest-delete/'+partial[3]);
+                        let location = jqXHR.getResponseHeader('Location');
+                        $rest.find('a[data-ajax-method=PUT]').attr('href', location);
+                        $rest.find('a[data-ajax-method=DELETE]').attr('href', location);
                     }
-
                     notify.addSuccess("OK. Additional information in console")
                 })
                 .on('error.ajax.bluz', function(event, jqXHR, textStatus, errorThrown){
