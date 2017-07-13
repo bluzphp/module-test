@@ -129,10 +129,10 @@ You can find source code at <code>application/modules/test/controllers/cli.php</
 require(["jquery", "bluz.notify"], function($, notify) {
     $(function(){
         $('#ajax-callback')
-            .on('success.ajax.bluz', function(event, data, textStatus, jqXHR){
+            .on('success.ajax.bluz', function(){
                 notify.addSuccess("Event `success.ajax.bluz` is fired")
             })
-            .on('error.ajax.bluz', function(event, jqXHR, textStatus, errorThrown){
+            .on('error.ajax.bluz', function(){
                 notify.addSuccess("Event `error.ajax.bluz` is fired")
             });
     });
@@ -142,11 +142,13 @@ require(["jquery", "bluz.notify"], function($, notify) {
     require(["jquery", "bluz.notify"], function($, notify) {
         $(function(){
             $('#ajax-callback')
-                .on('success.ajax.bluz', function(event, data, textStatus, jqXHR){
+                .on('success.ajax.bluz', function(){
                     notify.addSuccess("Event `success.ajax.bluz` is fired")
+                        .done(function(){ console.log("Deferred call") });
                 })
-                .on('error.ajax.bluz', function(event, jqXHR, textStatus, errorThrown){
+                .on('error.ajax.bluz', function(){
                     notify.addSuccess("Event `error.ajax.bluz` is fired")
+                        .done(function(){ console.log("Deferred call") });
                 });
         });
     });
