@@ -10,7 +10,7 @@ define(
     function(React, ReactDOM, Redux, ReactRedux, Pager, $, _, notify) {
         "use strict";
 
-        var Provider = ReactRedux.Provider;
+        let Provider = ReactRedux.Provider;
 
         /**
          * Actions
@@ -163,7 +163,7 @@ define(
                     break;
                 case EDIT_FORM:
                     let elements = newState.data.filter(function(el) {
-                        return (el.id == action.payload.id);
+                        return (el.id === action.payload.id);
                     });
                     newState.form = elements[0];
                     break;
@@ -173,8 +173,8 @@ define(
                 case CREATE_ROW:
                     break;
                 case UPDATE_ROW:
-                    for (var i = 0; i < newState.data.length; i++) {
-                        if (newState.data[i].id == action.payload.row.id) {
+                    for (let i = 0; i < newState.data.length; i++) {
+                        if (newState.data[i].id === action.payload.row.id) {
                             newState.data[i] = action.payload.row;
                             break;
                         }
@@ -182,7 +182,7 @@ define(
                     break;
                 case DELETE_ROW:
                     newState.data = newState.data.filter(function(el) {
-                        return (el.id != action.payload.id);
+                        return (el.id !== action.payload.id);
                     });
                     break;
                 case SET_DATA:
@@ -201,7 +201,7 @@ define(
         /**
          * Store
          */
-        var store = Redux.createStore(mainApp);
+        let store = Redux.createStore(mainApp);
 
         store.subscribe(function() {
             console.log('STORE: ', store.getState());
@@ -210,7 +210,7 @@ define(
         /**
          * Table Row
          */
-        var TableRow = React.createClass({
+        let TableRow = React.createClass({
             handleClickEdit: function(e) {
                 e.preventDefault();
                 this.props.onClickEdit(this.props.id);
@@ -248,9 +248,9 @@ define(
         /**
          * Table Body
          */
-        var TableBody = React.createClass({
+        let TableBody = React.createClass({
             render: function() {
-                var rowNodes = this.props.data.map(function(row, i) {
+                let rowNodes = this.props.data.map(function(row, i) {
                     return (
                         <TableRow key={row.id} id={row.id} name={row.name} email={row.email} status={row.status} onClickEdit={this.props.onClickEdit} onClickDelete={this.props.onClickDelete} />
                     );
@@ -267,9 +267,9 @@ define(
         /**
          * Table
          */
-        var TableGrid = React.createClass({
+        let TableGrid = React.createClass({
             render: function() {
-                console.log('TableGrid.render', this.props);
+                // console.log('TableGrid.render', this.props);
                 return (
                     <table className="table grid">
                         <thead>
@@ -286,16 +286,16 @@ define(
             }
         });
 
-        TableGrid = ReactRedux.connect(function(state) {
+        ReactRedux.connect(function(state) {
             return state;
         })(TableGrid);
 
         /**
          * Input Text Component
          */
-        var TextInput = React.createClass({
+        let TextInput = React.createClass({
             render: function () {
-                var error = this.props.error ? (
+                let error = this.props.error ? (
                     <span className="error">{this.props.error}</span>
                 ) : null;
 
@@ -320,9 +320,9 @@ define(
         /**
          * Input Select Component
          */
-        var SelectInput = React.createClass({
+        let SelectInput = React.createClass({
             render: function () {
-                var error = this.props.error ? (
+                let error = this.props.error ? (
                     <span className="error">{this.props.error}</span>
                 ) : null;
 
@@ -346,7 +346,7 @@ define(
         /**
          * Create and Edit Form
          */
-        var Form = React.createClass({
+        let Form = React.createClass({
             handleChange: function(e) {
                 e.preventDefault();
 
@@ -415,17 +415,18 @@ define(
             }
         });
 
-        Form = ReactRedux.connect(function(state) {
+        ReactRedux.connect(function(state) {
             return state.form;
         })(Form);
-        Pager = ReactRedux.connect(function(state) {
+
+        ReactRedux.connect(function(state) {
             return state.pager;
         })(Pager);
 
         /**
          * Container
          */
-        var Container = React.createClass({
+        let Container = React.createClass({
             componentDidMount: function() {
                 this.doRead(this.props.pager.current);
             },
@@ -450,7 +451,7 @@ define(
                 this.props.dispatch(updateForm(row));
             },
             handleSubmit: function(row) {
-                if (row.id == '') {
+                if (row.id === '') {
                     this.doCreate(row);
                 } else {
                     this.doUpdate(row);
@@ -470,7 +471,7 @@ define(
                  * Offset for page navigation
                  * @type {number}
                  */
-                var offset = this.props.pager.limit * newPage;
+                let offset = this.props.pager.limit * newPage;
 
                 $.ajax({
                     url: this.props.url + '?offset='+offset+'&limit='+this.props.pager.limit,
@@ -478,10 +479,10 @@ define(
                     cache: false,
                     success: function(data, status, xhr) {
                         // e.g. Content-Range:items 0-10/96
-                        var range = xhr.getResponseHeader("Content-Range");
-                        var [, , , total] = range.split(/[ -\/]/g);
+                        let range = xhr.getResponseHeader("Content-Range");
+                        let [, , , total] = range.split(/[ -\/]/g);
 
-                        var pages = Math.ceil(total / store.getState().pager.limit);
+                        let pages = Math.ceil(total / store.getState().pager.limit);
 
                         // update data container and total value
                         this.props.dispatch(setData(data, pages));
@@ -573,7 +574,7 @@ define(
             }
         });
 
-        Container = ReactRedux.connect(function(state) {
+        ReactRedux.connect(function(state) {
             return state;
         })(Container);
 
