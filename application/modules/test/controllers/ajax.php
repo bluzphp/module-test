@@ -35,4 +35,6 @@ return function ($messages = false) {
     Messages::addNotice('Method '.Request::getMethod());
 
     $this->assign('foo', 'bar');
+
+    sleep(2);
 };
