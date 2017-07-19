@@ -15,6 +15,7 @@ class TestSeeder extends AbstractSeed
     public function run()
     {
         $faker = Faker\Factory::create();
+
         $data = [];
         for ($i = 0; $i < 100; $i++) {
             $data[] = [
