@@ -26,9 +26,7 @@ return function () {
     /**
      * @var Controller $this
      */
-    $crud = new Crud();
-
-    $crud->setCrud(Test\Crud::getInstance());
+    $crud = new Crud(Test\Crud::getInstance());
 
     $crud->get('system', 'crud/get', 'Read');
     $crud->post('system', 'crud/post', 'Create');
