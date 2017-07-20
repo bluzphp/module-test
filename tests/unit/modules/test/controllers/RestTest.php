@@ -33,7 +33,7 @@ class RestTest extends ControllerTestCase
     {
         parent::setUp();
         self::setupSuperUserIdentity();
-        $this->getApp()->useLayout(false);
+        self::getApp()->useLayout(false);
         Response::setHeader('Content-Type', 'application/json');
 
         Db::insert('test')->setArray(
@@ -70,6 +70,15 @@ class RestTest extends ControllerTestCase
     }
 
     /**
+     * Tear down environment
+     */
+    public function tearDown()
+    {
+        Db::delete('test')->where('id > ?', 1000)->execute();
+        parent::tearDown();
+    }
+
+    /**
      * GET request with PRIMARY should return one record
      */
     public function testReadOne()
@@ -86,16 +95,6 @@ class RestTest extends ControllerTestCase
     }
 
     /**
-     * Tear down environment
-     */
-    public function tearDown()
-    {
-        parent::tearDown();
-
-        Db::delete('test')->where('id > ?', 1000)->execute();
-    }
-
-    /**
      * GET request should return SET of records
      */
     public function testReadSet()
@@ -103,7 +102,9 @@ class RestTest extends ControllerTestCase
         $this->dispatch('/test/rest/', ['offset' => 0, 'limit' => 3]);
 
         self::assertResponseCode(StatusCode::PARTIAL_CONTENT);
-        self::assertEquals(sizeof(Response::getBody()->getData()->toArray()), 3);
+        self::assertCount(3, Response::getBody()->getData()->toArray());
+        // 100 from TestSeeder
+        // +4 from setUp
         self::assertEquals(Response::getHeader('Content-Range'), 'items 0-3/104');
     }
 
@@ -157,7 +158,7 @@ class RestTest extends ControllerTestCase
         );
 
         self::assertNotNull(Response::getBody()->getData()->get('errors'));
-        self::assertEquals(sizeof(Response::getBody()->getData()->get('errors')), 2);
+        self::assertCount(2, Response::getBody()->getData()->get('errors'));
         self::assertResponseCode(StatusCode::BAD_REQUEST);
     }
 

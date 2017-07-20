@@ -33,7 +33,7 @@ class CrudTest extends ControllerTestCase
     {
         parent::setUp();
         self::setupSuperUserIdentity();
-        $this->getApp()->useLayout(false);
+        self::getApp()->useLayout(false);
 
         Db::insert('test')->setArray(
             [
@@ -73,9 +73,8 @@ class CrudTest extends ControllerTestCase
      */
     public function tearDown()
     {
-        parent::tearDown();
-
         Db::delete('test')->where('id > ?', 1000)->execute();
+        parent::tearDown();
     }
 
     /**
@@ -141,7 +140,7 @@ class CrudTest extends ControllerTestCase
         );
 
         self::assertNotNull(Response::getBody()->getData()->get('errors'));
-        self::assertEquals(sizeof(Response::getBody()->getData()->get('errors')), 2);
+        self::assertCount(2, Response::getBody()->getData()->get('errors'));
         self::assertOk();
     }
 
@@ -177,7 +176,7 @@ class CrudTest extends ControllerTestCase
         );
         ;
         self::assertNotNull(Response::getBody()->getData()->get('errors'));
-        self::assertEquals(sizeof(Response::getBody()->getData()->get('errors')), 2);
+        self::assertCount(2, Response::getBody()->getData()->get('errors'));
         self::assertOk();
     }
 
