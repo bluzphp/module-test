@@ -4,13 +4,9 @@
  * @link https://github.com/bluzphp/skeleton
  */
 
-/**
- * @namespace
- */
 namespace Application\Test;
 
 use Bluz\Validator\Traits\Validator;
-use Bluz\Validator\Validator as v;
 
 /**
  * Test Row
@@ -39,15 +35,13 @@ class Row extends \Bluz\Db\Row
     protected function beforeSave()
     {
         // name validator
-        $this->addValidator(
-            'name',
-            v::required()->latin(' ')
-        );
+        $this->addValidator('name')
+            ->required()
+            ->latin(' ');
 
         // email validator
-        $this->addValidator(
-            'email',
-            v::required()->email()
-        );
+        $this->addValidator('email')
+            ->required()
+            ->email();
     }
 }
