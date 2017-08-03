@@ -28,10 +28,22 @@ return function () {
      */
     $crud = new Crud(Test\Crud::getInstance());
 
-    $crud->get('system', 'crud/get', 'Read');
-    $crud->post('system', 'crud/post', 'Create');
-    $crud->put('system', 'crud/put', 'Update');
-    $crud->delete('system', 'crud/delete', 'Delete');
+    $crud
+        ->get('system', 'crud/get')
+        ->acl('Read')
+    ;
+    $crud
+        ->post('system', 'crud/post')
+        ->acl('Create')
+    ;
+    $crud
+        ->put('system', 'crud/put')
+        ->acl('Update')
+    ;
+    $crud
+        ->delete('system', 'crud/delete')
+        ->acl('Delete')
+    ;
 
     return $crud->run();
 };
