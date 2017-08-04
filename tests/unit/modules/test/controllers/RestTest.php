@@ -172,7 +172,7 @@ class RestTest extends ControllerTestCase
             ['name' => 'Leonardo', 'email' => 'leonardo@turtles.ua'],
             RequestMethod::PUT
         );
-        ;
+
         self::assertOk();
 
         $id = Db::fetchOne(
