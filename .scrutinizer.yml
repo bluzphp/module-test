@@ -5,11 +5,8 @@ filter:
 checks:
   php: true
   javascript: true
-coding_style:
-  php:
-    spaces:
-      around_operators:
-        additive: false
-        multiplicative: false
-      within:
-        brackets: true
+tools:
+  php_analyzer: true
+  php_code_sniffer:
+    config:
+      standard: PSR2
