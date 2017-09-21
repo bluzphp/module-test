@@ -1,0 +1,15 @@
+filter:
+  excluded_paths:
+    - 'tests/*'
+    - 'public/js/vendor/*'
+checks:
+  php: true
+  javascript: true
+coding_style:
+  php:
+    spaces:
+      around_operators:
+        additive: false
+        multiplicative: false
+      within:
+        brackets: true
