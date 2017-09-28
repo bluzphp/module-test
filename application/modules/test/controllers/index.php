@@ -20,7 +20,7 @@ return function () {
      * @var Controller $this
      */
     Layout::title('Test Module');
-    Layout::title('Append', Layout::POS_APPEND);
-    Layout::title('Prepend', Layout::POS_PREPEND);
+    Layout::titleAppend('Append');
+    Layout::titlePrepend('Prepend');
     Layout::breadCrumbs([ 'Test' ]);
 };

@@ -21,13 +21,12 @@
  *     @SWG\Response(response=206, description="Collection present")
  * )
  *
- *
  * @SWG\Put(
  *     path="/test/rest/",
  *     tags={"test"},
  *     operationId="updateTestCollection",
  *     summary="Try to update Collection",
- *     @SWG\Response(response=501, description="Not Implemented", @SWG\Schema(ref="#/definitions/errorModel"))
+ *     @SWG\Response(@SWG\Schema(ref="#/definitions/error"), response=501, description="Not Implemented")
  * )
  *
  * @SWG\Delete(
@@ -35,7 +34,7 @@
  *     tags={"test"},
  *     operationId="deleteTestCollection",
  *     summary="Try to delete Collection",
- *     @SWG\Response(response=400, description="Not Found", @SWG\Schema(ref="#/definitions/errorModel"))
+ *     @SWG\Response(@SWG\Schema(ref="#/definitions/error"), response=400, description="Not Found")
  * )
  */
 
@@ -52,8 +51,8 @@
  *         required=true,
  *         type="integer"
  *     ),
- *     @SWG\Response(response=200, description="Given item found", @SWG\Schema(ref="#/definitions/test")),
- *     @SWG\Response(response=404, description="Item not found", @SWG\Schema(ref="#/definitions/errorModel"))
+ *     @SWG\Response(@SWG\Schema(ref="#/definitions/test"), response=200, description="Given item found"),
+ *     @SWG\Response(@SWG\Schema(ref="#/definitions/error"), response=404, description="Item not found")
  * )
  *
  * @SWG\Post(
@@ -91,7 +90,7 @@
  *         required=true,
  *         type="integer"
  *     ),
- *     @SWG\Response(response=501, description="Not Implemented", @SWG\Schema(ref="#/definitions/errorModel"))
+ *     @SWG\Response(@SWG\Schema(ref="#/definitions/error"), response=501, description="Not Implemented")
  * )
  *
  * @SWG\Put(
@@ -120,7 +119,7 @@
  *         required=false,
  *         type="string",
  *     ),
- *     @SWG\Response(response=404, description="Item not found", @SWG\Schema(ref="#/definitions/errorModel"))
+ *     @SWG\Response(@SWG\Schema(ref="#/definitions/error"), response=404, description="Item not found")
  * )
  *
  * @SWG\Delete(

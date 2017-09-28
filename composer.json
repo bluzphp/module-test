@@ -4,7 +4,7 @@
   "license": "MIT",
   "description": "Bluz test module",
   "require": {
-    "bluzphp/composer-plugin": "~2.0",
+    "bluzphp/composer-plugin": "~2.1",
     "fzaninotto/faker": "~1.6"
   }
 }
