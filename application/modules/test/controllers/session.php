@@ -26,9 +26,9 @@ return function () {
             'Session',
         ]
     );
-    Layout::title("Test/Index");
+    Layout::title('Test/Index');
 
-    Session::set('test', Session::get('test') ?: 'Session time: '.date("H:i:s"));
+    Session::set('test', Session::get('test') ?: date('H:i:s'));
 
     return [
         'title' => Layout::title(),

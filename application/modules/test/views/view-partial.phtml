@@ -1,3 +1,4 @@
-<h3>Partial Example</h3>
+<h2>Partial Example</h2>
 <hr/>
-<?=$this->partial('/partial/table.phtml', array('rows' => $data)) ?>
+<p class="lead">You can build table with partials chain <code>table</code> &raquo; <code>tr</code> &raquo; <code>td</code></p>
+<?= $this->partial('/partial/table.phtml', array('rows' => $data)) ?>

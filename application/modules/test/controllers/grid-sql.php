@@ -23,7 +23,8 @@ return function () {
     Layout::breadCrumbs(
         [
             Layout::ahref('Test', [ 'test', 'index' ]),
-            'Grid with SQL',
+            'Grid',
+            'SQL query',
         ]
     );
     $grid = new Test\SqlGrid();

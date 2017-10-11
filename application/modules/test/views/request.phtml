@@ -1,15 +1,26 @@
-<?php use Bluz\Proxy\Request; ?>
+<?php
+use Bluz\Proxy\Request;
 
-<h3>Proxy\Request Methods</h3>
+require_once __DIR__ .'/partial/demo.phtml';
+?>
 
-<h4><code>getMethod()</code></h4>
-<code><?php var_dump(Request::getMethod())?></code>
+<h2>Example of usage Request package</h2>
+<hr/>
+<pre class="alert alert-secondary"><code>use Bluz\Proxy\Request;</code></pre>
+<hr/>
 
-<h4><code>isCli()</code></h4>
-<code><?php var_dump(Request::isCli())?></code>
+<h3>Request::getMethod()</h3>
+<hr/>
+<?php demo(Request::getMethod()) ?>
 
-<h4><code>getUri()</code></h4>
-<code><?php var_dump(Request::getUri()->__toString())?></code>
+<h3>Request::isCli()</h3>
+<hr/>
+<?php demo(Request::isCli() ? 'true' : 'false') ?>
 
-<h4><code>getClientIp()</code></h4>
-<code><?php var_dump(Request::getClientIp())?></code>
+<h3>Request::getUri()</h3>
+<hr/>
+<?php demo(Request::getUri()->__toString()) ?>
+
+<h3>Request::getClientIp()</h3>
+<hr/>
+<?php demo(Request::getClientIp()) ?>

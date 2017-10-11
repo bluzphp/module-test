@@ -25,7 +25,8 @@ return function ($id = null) {
     Layout::breadCrumbs(
         [
             Layout::ahref('Test', [ 'test', 'index' ]),
-            'Cache Data',
+            'Cache',
+            'Data',
         ]
     );
     Layout::title('Check cache');

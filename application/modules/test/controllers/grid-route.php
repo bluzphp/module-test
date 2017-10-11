@@ -27,7 +27,8 @@ return function ($alias) {
     Layout::breadCrumbs(
         [
             Layout::ahref('Test', [ 'test', 'index' ]),
-            'Grid with Select',
+            'Grid',
+            'Request params',
         ]
     );
     $grid = new Test\SelectGrid();

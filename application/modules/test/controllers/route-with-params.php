@@ -18,7 +18,7 @@ use Bluz\Proxy\Request;
  * @param int $a
  * @param float $b
  * @param string $c
- * @return false
+ * @return string
  */
 return function ($a, $b, $c) {
     /**
@@ -30,22 +30,29 @@ return function ($a, $b, $c) {
             'Routers Examples',
         ]
     );
+
+    $a = esc($a);
+    $b = esc($b);
+    $c = esc($c);
     $uri = Request::getUri();
     $module = Request::getModule();
     $controller = Request::getController();
-    echo <<<CODE
-<h4>URL: $uri</h4>
-<h4>Route: $module/$controller</h4>
-<pre>
-/**
+
+    $content = <<<CODE
+<p class="text-muted">$uri</p>
+<div class="alert alert-light"><pre><code>/**
  * @route /{\$a}-{\$b}-{\$c}/
  * @param int \$a
  * @param float \$b
  * @param string \$c
- * @return closure
  */
-</pre>
+ return function (\$a, \$b, \$c) {
+     echo \$a; <em>// '$a'</em>
+     echo \$b; <em>// '$b'</em>
+     echo \$c; <em>// '$c'</em>
+ }</code></pre></div>
 CODE;
-    var_dump([ '$a'=>$a, '$b'=>$b, '$c'=>$c ]);
-    return false;
+    $this->assign('title', $module .'/'. $controller);
+    $this->assign('content', $content);
+    return 'modal.phtml';
 };

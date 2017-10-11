@@ -233,7 +233,7 @@ define(
             {this.props.status}
           </td>
           <td>
-            <button type="button" className="btn btn-default btn-xs" onClick={this.handleClickEdit}>
+            <button type="button" className="btn btn-light btn-xs" onClick={this.handleClickEdit}>
               <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             </button>
             &nbsp;
@@ -303,7 +303,7 @@ define(
 
         return (
           <div className={error ? 'form-group has-error' : 'form-group'}>
-            <label className="col-sm-2 control-label" for={'id-' + this.props.name}>
+            <label className="col-sm-2 col-form-label" for={'id-' + this.props.name}>
               {this.props.title}
             </label>
             <div className="col-sm-10">
@@ -330,7 +330,7 @@ define(
 
         return (
           <div className={error ? 'form-group has-error' : 'form-group'}>
-            <label className="col-sm-2 control-label" for={'id-' + this.props.name}>{this.props.title}</label>
+            <label className="col-sm-2 col-form-label" for={'id-' + this.props.name}>{this.props.title}</label>
             <div className="col-sm-10">
               <select name={this.props.name} id={'id-' + this.props.name}
                       className="form-control"
@@ -410,7 +410,7 @@ define(
                     </SelectInput>
                   </div>
                   <div className="modal-footer">
-                    <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-light" data-dismiss="modal">Close</button>
                     <button type="submit" className="btn btn-primary">Save</button>
                   </div>
                 </form>

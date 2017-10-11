@@ -22,7 +22,8 @@ return function () {
     Layout::breadCrumbs(
         [
             Layout::ahref('Test', [ 'test', 'index' ]),
-            'Grid with Filter',
+            'Grid',
+            'Filters',
         ]
     );
     $grid = new Test\ArrayGrid();

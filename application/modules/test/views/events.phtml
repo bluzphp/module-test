@@ -1,46 +1,55 @@
-<pre>
-$this->getEventManager()
-    <em>// attach callback function to `testevent`
-    // callback 1</em>
-    ->attach('testevent', function(Event $event){
-        return $event->getTarget()*2;
-    })
-    <em>// and again
-    // callback 2</em>
-    ->attach('testevent', function(Event $event){
-        return $event->getTarget()*2;
-    });
+<h2>Example of usage EventManager package</h2>
+<hr/>
 
-<em>// attach callbacks to other events in `testspace` namespace of events
+<h3>Subscribe to event</h3>
+<hr/>
+<pre class="alert alert-secondary">
+<code><em>// attach callback function to `testevent`
+// callback 1</em>
+EventManager::attach('testevent', function(Event $event){
+    return $event->getTarget()*2;
+})
+<em>// and again
+// callback 2</em>
+EventManager::attach('testevent', function(Event $event){
+    return $event->getTarget()*2;
+});</code></pre>
+
+<h3>Subscribe to event in namespace</h3>
+<hr/>
+<pre class="alert alert-secondary">
+<code><em>// attach callbacks to other events in `testspace` namespace of events
 // callback 3</em>
-$this->getEventManager()->attach('testspace:event', function(Event $event){
+EventManager::attach('testspace:event', function(Event $event){
     return $event->getTarget()+4;
 });
 
 <em>// callback 4</em>
-$this->getEventManager()->attach('testspace:event', function(Event $event){
+EventManager::attach('testspace:event', function(Event $event){
     return $event->getTarget()+2;
 });
 
 <em>// callback 5</em>
-$this->getEventManager()->attach('testspace:event2', function(Event $event){
+EventManager::attach('testspace:event2', function(Event $event){
     $event->setTarget($event->getTarget()+5);
     return false;
 });
 
 <em>// callback 6</em>
-$this->getEventManager()->attach('testspace:event2', function(Event $event){
+EventManager::attach('testspace:event2', function(Event $event){
     echo "Never run";
 });
 
 <em>// callback 7</em>
-$this->getEventManager()->attach('testspace', function(Event $event){
+EventManager::attach('testspace', function(Event $event){
     return $event->getTarget()+1;
-});
+});</code></pre>
 
-// Trigger events
-echo $this->getEventManager()->trigger('testevent', 1);        <em>// 1 => callback1 => callback2 => 4</em>
-echo $this->getEventManager()->trigger('testspace:event', 1);  <em>// 1 => callback7 => callback3 => callback7 => callback4 => 8</em>
-echo $this->getEventManager()->trigger('testspace:event2', 1); <em>// 1 => callback7 => callback5 => 7</em>
+<h3>Trigger events</h3>
+<hr/>
+<pre class="alert alert-secondary"><code><em>// Trigger events</em>
+echo EventManager::trigger('testevent', 1);        <em>// 1 => callback1 => callback2 => <?= $result1 ?></em>
+echo EventManager::trigger('testspace:event', 1);  <em>// 1 => callback7 => callback3 => callback7 => callback4 => <?= $result2 ?></em>
+echo EventManager::trigger('testspace:event2', 1); <em>// 1 => callback7 => callback5 => <?= $result3 ?></em>
+</code>
 </pre>
-

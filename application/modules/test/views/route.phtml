@@ -1,8 +1,26 @@
 <ul>
-<li><?= $this->ahref('Static', ['test', 'route-static'], ['class'=>'dialog']);?> &mdash; static route (w/out variables) has priority under other</li>
-<li><?= $this->ahref('With one param', ['test', 'route-with-param', array('a'=>'foo')], ['class'=>'dialog']);?></li>
-<li><?= $this->ahref('With one param, but it missed', ['test', 'route-with-param'], ['class'=>'dialog']);?></li>
-<li><?= $this->ahref('The same route with one optional param', ['test', 'route-with-param'], ['class'=>'dialog']);?></li>
-<li><?= $this->ahref('With many params', ['test', 'route-with-params', array('a'=>123, 'b'=>3.14, 'c'=>'bar')], ['class'=>'dialog']);?></li>
-<li><?= $this->ahref('With other params', ['test', 'route-with-other-params', array('id'=>123, 'alias'=>'bar')], ['class'=>'dialog']);?></li>
+  <li>
+    <?= $this->ahref('Static route', ['test', 'route-static'], ['class' => 'dialog']); ?> &mdash;
+    static route (w/out variables) has priority under other routers
+  </li>
+  <li><?= $this->ahref(
+          'Route with one param',
+          ['test', 'route-with-param', array('a' => 'foo')],
+          ['class' => 'dialog', 'data-modal-style' => 'modal-lg']
+      ); ?>  &mdash; variable should be present in <code>@route</code>, <code>@param</code> and function arguments</li>
+  <li><?= $this->ahref(
+          'The same route without optional param',
+          ['test', 'route-with-param'],
+          ['class' => 'dialog', 'data-modal-style' => 'modal-lg']
+      ); ?></li>
+  <li><?= $this->ahref(
+          'Route with many params',
+          ['test', 'route-with-params', array('a' => 123, 'b' => 3.14, 'c' => 'bar')],
+          ['class' => 'dialog', 'data-modal-style' => 'modal-lg']
+      ); ?>  &mdash; variables should be present in <code>@route</code>, <code>@param</code> and function arguments</li>
+  <li><?= $this->ahref(
+          'Route with GET params',
+          ['test', 'route-with-get-params', array('id' => 123, 'alias' => 'bar')],
+          ['class' => 'dialog', 'data-modal-style' => 'modal-lg']
+      ); ?>  &mdash; you don't have to describe GET arguments</li>
 </ul>

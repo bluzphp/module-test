@@ -23,7 +23,8 @@ return function () {
     Layout::breadCrumbs(
         [
             Layout::ahref('Test', [ 'test', 'index' ]),
-            'Grid with Array',
+            'Grid',
+            'Array source',
         ]
     );
     $grid = new Test\ArrayGrid();

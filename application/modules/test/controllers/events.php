@@ -79,8 +79,8 @@ return function () {
     );
 
     return [
-        'res1' => EventManager::trigger('testevent', 1),
-        'res2' => EventManager::trigger('testspace:event', 1),
-        'res3' => EventManager::trigger('testspace:event2', 1),
+        'result1' => EventManager::trigger('testevent', 1),
+        'result2' => EventManager::trigger('testspace:event', 1),
+        'result3' => EventManager::trigger('testspace:event2', 1),
     ];
 };
