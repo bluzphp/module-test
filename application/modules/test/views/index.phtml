@@ -1,249 +1,364 @@
 <?php
 /**
  * @var \Application\Users\Row $user
- * @var \Bluz\View\View $this
+ * @var \Bluz\View\View        $this
  */
 $this->headScript($this->baseUrl('js/test/config.js'));
 ?>
+<style>
+  #rest a.btn {
+    width:20%
+  }
+</style>
 
-<h3>Hello, <?=$this->username()?></h3>
-<p>This is page consist many examples, all of them you can find in test module</p>
-<h3>Controller features</h3>
-<ul>
-    <li><?= $this->ahref('Reflection Data', ['test', 'reflection']);?></li>
-    <li><?= $this->ahref('Controller &rarr; Disable View', ['test', 'no-view']);?></li>
-    <li><?= $this->ahref('Controller &rarr; Disable Output', ['test', 'no-output']);?></li>
-</ul>
-<hr/>
-<ul>
+<h2>Hello, <?= $this->username() ?></h2>
+<p class="lead">This is page consist many examples, all of them you can find inside test module</p>
+
+<section class="mt-4">
+  <h3>Modules</h3>
+  <hr/>
+  <?php if ($this->hasModule('options')) : ?>
+  <ul>
+    <li><?= $this->ahref('Options', ['test', 'options']) ?> &mdash; example of usage module Options from another module</li>
+  </ul>
+  <?php else: ?>
+  <p>Required to install options module, just run <code>php ./vendor/bin/bluzman module:install options</code></p>
+  <?php endif; ?>
+</section>
+
+<section class="mt-4">
+  <h3>Packages</h3>
+  <hr/>
+  <ul>
+    <li>Cache
+      <ul>
+        <li><?= $this->ahref('Cache controller\'s data', ['test', 'cache-controller']); ?></li>
+        <li><?= $this->ahref('Cache any data', ['test', 'cache-data', ['id' => 1]]); ?></li>
+      </ul>
+    </li>
+    <li>Database
+      <ul>
+        <li><?= $this->ahref('DB Operations', ['test', 'db']); ?></li>
+        <li><?= $this->ahref('DB Query Builders', ['test', 'db-query']); ?></li>
+        <li><?= $this->ahref('DB Relations', ['test', 'db-relations']); ?></li>
+        <li><?= $this->ahref('DB Table', ['test', 'db-table']); ?></li>
+      </ul>
+    </li>
+    <li>Grid
+      <ul>
+        <li><?= $this->ahref('Grid with Array source', ['test', 'grid-array']); ?></li>
+        <li><?= $this->ahref('Grid with Select source', ['test', 'grid-select']); ?></li>
+        <li><?= $this->ahref('Grid with Table source', ['test', 'grid-table']); ?></li>
+        <li><?= $this->ahref('Grid with SQL source', ['test', 'grid-sql']); ?></li>
+        <li><?= $this->ahref('Grid with custom route', ['test', 'grid-route', ['alias' => 'example']]); ?></li>
+        <li><?= $this->ahref('Grid with filter search', ['test', 'grid-with-filter']); ?></li>
+      </ul>
+    </li>
+    <li><?= $this->ahref('Events', ['test', 'events']); ?></li>
+    <li><?= $this->ahref('Request', ['test', 'request']); ?></li>
+    <li><?= $this->ahref('Routers', ['test', 'route']); ?></li>
+    <li><?= $this->ahref('Session', ['test', 'session']); ?></li>
+    <li><?= $this->ahref('Mailer', ['test', 'mailer']); ?></li>
+    <li>View
+      <ul>
+        <li><?= $this->ahref('View Partials', ['test', 'view-partial']); ?></li>
+        <li><?= $this->ahref('View Form Helpers', ['test', 'view-helpers']); ?></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section class="mt-4">
+  <h3>Controllers' features</h3>
+  <hr/>
+  <ul>
+    <li><?= $this->ahref('Reflection Data', ['test', 'reflection']); ?></li>
+    <li><?= $this->ahref('Controller &rarr; Disable View', ['test', 'no-view']); ?></li>
+    <li><?= $this->ahref('Controller &rarr; Disable Output', ['test', 'no-output']); ?></li>
+  </ul>
+  <hr/>
+  <ul>
     <li><?= $this->ahref('CRUD', ['test', 'grid-sql']) ?> &mdash; Create, Read, Update and Delete examples</li>
     <li><?= $this->ahref('REST + Backbone', ['test', 'backbone']) ?> &mdash; is working</li>
     <li><?= $this->ahref('REST + React', ['test', 'react']) ?> &mdash; is working too</li>
-</ul>
-<hr/>
-<ul>
+  </ul>
+  <hr/>
+  <ul>
     <li><?= $this->ahref('Download File', ['test', 'file']) ?> &mdash; Send file to browser</li>
     <li><?= $this->ahref('Cookies', ['test', 'cookies']) ?> &mdash; Send cookies to browser</li>
-</ul>
-<hr/>
-<p>Try REST methods</p>
-<div id="rest">
-    <div class="btn-group">
-        <?= $this->ahref('GET 10 Records', ['test', 'rest'], ['class'=>'ajax btn btn-default', 'data-ajax-method'=>'GET', 'id'=> 'rest-get']);?>
-        <?= $this->ahref('HEAD 10 Records', ['test', 'rest'], ['class'=>'ajax btn btn-default', 'data-ajax-method'=>'HEAD']);?>
-    </div>
-    <br/>
-    <br/>
-    <div class="btn-group">
-        <?= $this->ahref('GET Record ID:10', 'test/rest/10', ['class'=>'ajax btn btn-default', 'data-ajax-method'=>'GET']);?>
-        <?= $this->ahref('HEAD Record ID:10', 'test/rest/10', ['class'=>'ajax btn btn-default', 'data-ajax-method'=>'HEAD']);?>
-    </div>
-    <br/>
-    <br/>
-    <div class="btn-group">
-        <?= $this->ahref('<span class="badge">1</span> POST Create Record', ['test', 'rest'], ['class'=>'ajax btn btn-primary', 'data-ajax-method'=>'POST', 'data-name'=> 'Name', 'data-email'=> 'email@bluz.com']);?>
-        <?= $this->ahref('<span class="badge">2</span> GET Record', '/test/rest/10', ['class'=>'ajax btn btn-warning', 'data-ajax-method'=>'GET']);?>
-        <?= $this->ahref('<span class="badge">3</span> PUT Edit Record', '/test/rest/10', ['class'=>'ajax btn btn-success', 'data-ajax-method'=>'PUT', 'data-name'=> 'New Name']);?>
-        <?= $this->ahref('<span class="badge">4</span> DELETE Record', '/test/rest/10', ['class'=>'ajax btn btn-danger', 'data-ajax-method'=>'DELETE']);?>
-    </div>
-</div>
-<script>
-    require(["jquery", "bluz", "bluz.notify"], function($, bluz, notify) {
-        $(function(){
-            let $rest = $('#rest');
-            $rest
-                .on('success.ajax.bluz', function(event, ajaxEvent, jqXHR, options){
-                    notify.addSuccess("OK. Additional information in console");
-                    // check correct creation
-                    if (jqXHR.getResponseHeader('Location')) {
-                        let location = jqXHR.getResponseHeader('Location');
-                        $rest.find('a[data-ajax-method=PUT]').attr('href', location);
-                        $rest.find('a[data-ajax-method=GET]').attr('href', location);
-                        $rest.find('a[data-ajax-method=DELETE]').attr('href', location);
-                        bluz.log("Instance created, new location is:", location);
-                    } else {
-                        bluz.log("Server response:", jqXHR.statusText);
-                        if (jqXHR.responseJSON) {
-                            bluz.log("Response data", jqXHR.responseJSON);
-                        }
-                    }
+  </ul>
+</section>
 
-                })
-                .on('error.ajax.bluz', function(event, ajaxEvent, jqXHR, options, errorThrown){
+<section class="mt-4">
+  <h3>Try REST methods</h3>
+  <hr/>
+  <div id="rest">
+    <div class="d-flex justify-content-around">
+        <?= $this->ahref(
+            'GET Record by ID:10',
+            'test/rest/10',
+            ['class' => 'ajax btn btn-secondary', 'data-ajax-method' => 'GET']
+        ); ?>
+        <?= $this->ahref(
+            'HEAD Record by ID:10',
+            'test/rest/10',
+            ['class' => 'ajax btn btn-secondary', 'data-ajax-method' => 'HEAD']
+        ); ?>
+        <?= $this->ahref(
+            'GET 10 Records',
+            ['test', 'rest'],
+            ['class' => 'ajax btn btn-secondary', 'data-ajax-method' => 'GET', 'id' => 'rest-get']
+        ); ?>
+        <?= $this->ahref(
+            'HEAD 10 Records',
+            ['test', 'rest'],
+            ['class' => 'ajax btn btn-secondary', 'data-ajax-method' => 'HEAD']
+        ); ?>
+    </div>
+    <hr/>
+    <div class="d-flex justify-content-around">
+      <?= $this->ahref(
+          '<span class="badge badge-dark">1</span> POST Create Record',
+          ['test', 'rest'],
+          [
+              'class' => 'ajax btn btn-primary',
+              'data-ajax-method' => 'POST',
+              'data-name' => 'Name',
+              'data-email' => 'email@bluz.com'
+          ]
+      ); ?>
+      <?= $this->ahref(
+          '<span class="badge badge-dark">2</span> GET Record',
+          '/test/rest/10',
+          ['class' => 'ajax btn btn-success', 'data-ajax-method' => 'GET']
+      ); ?>
+      <?= $this->ahref(
+          '<span class="badge badge-dark">3</span> PUT Edit Record',
+          '/test/rest/10',
+          ['class' => 'ajax btn btn-warning', 'data-ajax-method' => 'PUT', 'data-name' => 'New Name']
+      ); ?>
+      <?= $this->ahref(
+          '<span class="badge badge-dark">4</span> DELETE Record',
+          '/test/rest/10',
+          ['class' => 'ajax btn btn-danger', 'data-ajax-method' => 'DELETE']
+      ); ?>
+    </div>
+    <hr/>
+  </div>
+  <script>
+    require(["jquery", "bluz", "bluz.notify"], function ($, bluz, notify) {
+      $(function () {
+        let $rest = $('#rest');
+        $rest
+          .on('success.bluz.ajax', function (event, ajaxEvent, jqXHR, options) {
+            notify.addSuccess("OK. Additional information in console");
+            // check correct creation
+            if (jqXHR.getResponseHeader('Location')) {
+              let location = jqXHR.getResponseHeader('Location');
+              $rest.find('a[data-ajax-method=PUT]').attr('href', location);
+              $rest.find('a[data-ajax-method=GET]').attr('href', location);
+              $rest.find('a[data-ajax-method=DELETE]').attr('href', location);
+              bluz.log("Instance created, new location is:", location);
+            } else {
+              bluz.log("Server response:", jqXHR.statusText);
+              if (jqXHR.responseJSON) {
+                bluz.log("Response data", jqXHR.responseJSON);
+              }
+            }
 
-                });
-        });
+          })
+          .on('error.bluz.ajax', function (event, ajaxEvent, jqXHR, options, errorThrown) {
+
+          });
+      });
     });
-</script>
+  </script>
+</section>
 
-<h3>CLI</h3>
-<p>
-For test CLI you can run <code>php ./vendor/bin/bluzman run test/cli --env dev</code>.<br/>
-You can find source code at <code>application/modules/test/controllers/cli.php</code>
-</p>
-
-<h3>Packages</h3>
-<ul>
-    <li><?= $this->ahref('Cache Controller', ['test', 'cache-controller']);?></li>
-    <li><?= $this->ahref('Cache Data', ['test', 'cache-data', ['id'=>1]]);?></li>
-    <li><?= $this->ahref('DB Operations', ['test', 'db']);?></li>
-    <li><?= $this->ahref('DB Query Builders', ['test', 'db-query']);?></li>
-    <li><?= $this->ahref('DB Relations', ['test', 'db-relations']);?></li>
-    <li><?= $this->ahref('DB Table', ['test', 'db-table']);?></li>
-    <li><?= $this->ahref('Events', ['test', 'events']);?></li>
-    <li><?= $this->ahref('Request', ['test', 'request']);?></li>
-    <li><?= $this->ahref('Routers', ['test', 'route']);?></li>
-    <li><?= $this->ahref('Session', ['test', 'session']);?></li>
-    <li><?= $this->ahref('Grid with Array source', ['test', 'grid-array']);?></li>
-    <li><?= $this->ahref('Grid with Select source', ['test', 'grid-select']);?></li>
-    <li><?= $this->ahref('Grid with Table source', ['test', 'grid-table']);?></li>
-    <li><?= $this->ahref('Grid with SQL source', ['test', 'grid-sql']);?></li>
-    <li><?= $this->ahref('Grid with custom route', ['test', 'grid-route', ['alias'=>'example']]);?></li>
-    <li><?= $this->ahref('Grid with filter search', ['test', 'grid-with-filter']);?></li>
-    <li><?= $this->ahref('Mailer', ['test', 'mailer']);?></li>
-    <li><?= $this->ahref('View Partials', ['test', 'view-partial']);?></li>
-    <li><?= $this->ahref('View Form Helpers', ['test', 'view-helpers']);?></li>
-</ul>
-<hr/>
-<p>Required to install options module, just run <code>php ./vendor/bin/bluzman module:install options</code></p>
-<ul>
-    <li><?= $this->ahref('Options', ['test', 'options']) ?> &mdash; example of usage module Options from another module</li>
-</ul>
-<hr/>
-
-<h3>Magic AJAX calls</h3>
-<p>Try AJAX calls over GET/POST/PUT/DELTE HTTPs methods</p>
-<div class="btn-group">
-    <?= $this->ahref('GET', ['test', 'ajax'], ['class'=>'ajax btn btn-default', 'data-ajax-method'=>'GET']);?>
-    <?= $this->ahref('POST', ['test', 'ajax'], ['class'=>'ajax btn btn-default', 'data-ajax-method'=>'POST']);?>
-    <?= $this->ahref('PUT', ['test', 'ajax'], ['class'=>'ajax btn btn-default', 'data-ajax-method'=>'PUT']);?>
-    <?= $this->ahref('DELETE', ['test', 'ajax'], ['class'=>'ajax btn btn-default', 'data-ajax-method'=>'DELETE']);?>
-</div>
-<hr/>
-<div class="btn-group">
-    <a href="<?= $this->url('test', 'ajax') ?>" id="ajax-callback" class="btn btn-default ajax">AJAX call with fired trigger</a>
-</div>
-<hr/>
-<p>Example of JavaScript:</p>
-<pre>
-require(["jquery", "bluz.notify"], function($, notify) {
+<section class="mt-4">
+  <h3>Magic AJAX calls</h3>
+  <hr/>
+  <p>You can send AJAX calls over <code>GET</code>, <code>POST</code>, <code>PUT</code> or <code>DELETE</code> HTTPs' methods</p>
+  <div class="alert alert-secondary d-flex justify-content-between">
+    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" class="ajax" data-ajax-method="get"&gt;GET&lt;/a&gt</code></pre>
+    <?= $this->ahref('GET', ['test', 'ajax'], ['class' => 'ajax btn btn-success w-25', 'data-ajax-method' => 'GET']); ?>
+  </div>
+  <div class="alert alert-secondary d-flex justify-content-between">
+    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" class="ajax" data-ajax-method="post"&gt;POST&lt;/a&gt</code></pre>
+      <?= $this->ahref('POST', ['test', 'ajax'], ['class' => 'ajax btn btn-primary w-25', 'data-ajax-method' => 'POST']); ?>
+  </div>
+  <div class="alert alert-secondary d-flex justify-content-between">
+    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" class="ajax" data-ajax-method="put"&gt;PUT&lt;/a&gt</code></pre>
+      <?= $this->ahref('PUT', ['test', 'ajax'], ['class' => 'ajax btn btn-warning w-25', 'data-ajax-method' => 'PUT']); ?>
+  </div>
+  <div class="alert alert-secondary d-flex justify-content-between">
+    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" class="ajax" data-ajax-method="delete"&gt;DELETE&lt;/a&gt</code></pre>
+      <?= $this->ahref('DELETE', ['test', 'ajax'], ['class' => 'ajax btn btn-danger w-25', 'data-ajax-method' => 'DELETE']); ?>
+  </div>
+  <hr/>
+  <div class="btn-group">
+    <a href="<?= $this->url('test', 'ajax') ?>" id="ajax-callback" class="btn btn-light ajax">AJAX call with trigger</a>
+  </div>
+  <hr/>
+  <p>Example of JavaScript:</p>
+  <pre class="alert alert-secondary"><code>require(["jquery", "bluz.notify"], function($, notify) {
     $(function(){
-        $('#ajax-callback')
-            .on('success.ajax.bluz', function(){
-                notify.addSuccess("Event `success.ajax.bluz` is fired")
-            })
-            .on('error.ajax.bluz', function(){
-                notify.addSuccess("Event `error.ajax.bluz` is fired")
-            });
-    });
-});
-</pre>
-<script>
-    require(["jquery", "bluz.notify"], function($, notify) {
-        $(function(){
-            $('#ajax-callback')
-                .on('success.ajax.bluz', function(){
-                    notify.addSuccess("Event `success.ajax.bluz` is fired")
-                        .done(function(){ console.log("Deferred call") });
-                })
-                .on('error.ajax.bluz', function(){
-                    notify.addSuccess("Event `error.ajax.bluz` is fired")
-                        .done(function(){ console.log("Deferred call") });
-                });
+      $('#ajax-callback') <em>// button above</em>
+        .on('success.bluz.ajax', function(){
+          notify.addSuccess("Event `success.bluz.ajax` is fired")
+        })
+        .on('error.bluz.ajax', function(){
+          notify.addSuccess("Event `error.bluz.ajax` is fired")
         });
     });
-</script>
-<hr/>
-<div class="btn-group">
-    <?= $this->ahref('Ajax + Messages', ['test', 'ajax'], ['class'=>'ajax btn btn-default', 'data-messages'=>true]);?>
-    <?= $this->ahref('Ajax + Confirm', ['test', 'ajax'], ['class'=>'ajax confirm btn btn-danger']);?>
-    <?= $this->ahref('Loading', ['test', 'ajax-html'], ['class'=>'load btn btn-default', 'data-ajax-target'=>'#load']);?>
-    <?= $this->ahref('Confirm', ['index', 'index'], ['class'=>'confirm btn btn-default', 'data-confirm'=>'Confirm?']);?>
-</div>
-
-<div id="load">
-    <h3>Loading to this container</h3>
-</div>
-
-<hr/>
-
-<div class="row">
-    <div class="col-md-3 form-group">
-        <select class="form-control load" name="formName" data-ajax-source="/test/ajax-form"
-                data-ajax-target="#formPlace">
-            <option value="">Select Form</option>
-            <option value="first-form">First</option>
-            <option value="second-form">Second</option>
-        </select>
+  });</code></pre>
+  <script>
+    require(["jquery", "bluz.notify"], function ($, notify) {
+      $(function () {
+        $('#ajax-callback')
+          .on('success.bluz.ajax', function () {
+            notify.addSuccess("Event `success.bluz.ajax` is fired")
+              .done(function () {
+                console.log("Deferred call")
+              });
+          })
+          .on('error.bluz.ajax', function () {
+            notify.addSuccess("Event `error.bluz.ajax` is fired")
+              .done(function () {
+                console.log("Deferred call")
+              });
+          });
+      });
+    });
+  </script>
+  <hr/>
+  <div class="d-flex justify-content-around">
+      <?= $this->ahref(
+          'Ajax + Messages',
+          ['test', 'ajax'],
+          ['class' => 'ajax btn btn-light', 'data-messages' => true]
+      ); ?>
+      <?= $this->ahref(
+          'Ajax + Confirm',
+          ['test', 'ajax'],
+          ['class' => 'ajax confirm btn btn-warning']
+      ); ?>
+      <?= $this->ahref(
+          'Load HTML',
+          ['test', 'ajax-html'],
+          ['class' => 'load btn btn-light', 'data-ajax-target' => '#load']
+      ); ?>
+      <?= $this->ahref(
+          'Load + Confirm',
+          ['test', 'ajax-html'],
+          ['class' => 'load confirm btn btn-warning', 'data-ajax-target' => '#load', 'data-confirm' => 'Are you wand to load data from server?']
+      ); ?>
+    <div>
+      <select class="form-control load" name="formName" data-ajax-source="/test/ajax-form"
+                     data-ajax-target="#load">
+        <option value="">Select Form</option>
+        <option value="first-form">First</option>
+        <option value="second-form">Second</option>
+      </select>
     </div>
-</div>
+  </div>
+  <hr/>
+  <div id="load" class="alert alert-info">
+    <h4>Try to load data from server by AJAX</h4>
+  </div>
+  <hr/>
+  <h3>Access denied</h3>
+  <p class="text-muted">If you try to load forbidden pages, system would send notice to you</p>
+  <div class="d-flex justify-content-around">
+    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger bluz-tooltip ajax" data-toggle="tooltip"
+       title="Return error message">Denied page, AJAX call</a>
+    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger bluz-tooltip dialog" data-toggle="tooltip"
+       title="Return error dialog">Denied page, AJAX dialog</a>
+  </div>
+  <hr/>
+</section>
 
-<div class="row">
-    <div id="formPlace">
-        <h3>Form loading to this container</h3>
-    </div>
-</div>
-
-<hr/>
-
-<h3>Access denied</h3>
-<div class="btn-group">
-    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-default bluz-tooltip ajax" data-toggle="tooltip" title="Return error message">Denied page, AJAX call</a>
-    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-default bluz-tooltip dialog" data-toggle="tooltip" title="Return error dialog">Denied page, dialog</a>
-</div>
-<hr/>
-
-<h3>Exceptions</h3>
-<ul>
+<section class="mt-4">
+  <h3>Exceptions</h3>
+  <hr/>
+  <p class="text-muted">Sometimes you can meet errors</p>
+  <ul>
     <li><?= $this->ahref('Throw exception from controller', ['test', 'exception']) ?></li>
     <li><?= $this->ahref('Throw exception from view', ['test', 'exception-view']) ?></li>
-</ul>
-<hr/>
+  </ul>
+</section>
 
-<h3>Dispatch controller</h3>
-<pre>
-$this->dispatch('test', 'empty')
-</pre>
-<div>
-    <?= $this->dispatch('test', 'empty') ?>
-</div>
+<section class="mt-4">
+  <h3>Dispatch controller</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$this->dispatch('test', 'empty')</code></pre>
+  <div class="card">
+    <div class="card-body">
+      <?= $this->dispatch('test', 'empty') ?>
+    </div>
+  </div>
+</section>
 
-<h3>Dispatch controller with <code>echo</code> call</h3>
-<pre>
-$this->dispatch('test', 'widgets/lorem')
-</pre>
-<div>
-    <?php $this->dispatch('test', 'widgets/lorem') ?>
-</div>
+<section class="mt-4">
+  <h3>Dispatch controller with <code>echo</code> call</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$this->dispatch('test', 'widgets/lorem')</code></pre>
+  <div class="card">
+    <div class="card-body">
+      <?php $this->dispatch('test', 'widgets/lorem') ?>
+    </div>
+  </div>
+</section>
 
-<h3>Wrong controller</h3>
-<pre>
-$this->dispatch('test', 'not-found')
-</pre>
-<div>
-    <?= $this->dispatch('test', 'not-found') ?>
-</div>
+<section class="mt-4">
+  <h3>Invalid controller</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$this->dispatch('test', 'not-found')</code></pre>
+  <div class="card">
+    <div class="card-body">
+      <?php $this->dispatch('test', 'not-found') ?>
+    </div>
+  </div>
+</section>
 
-<h3>Wrong without privileges</h3>
-<pre>
-$this->dispatch('test', 'denied')
-</pre>
-<div>
-    <?= $this->dispatch('test', 'denied') ?>
-</div>
+<section class="mt-4">
+  <h3>Controller without privileges</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$this->dispatch('test', 'denied')</code></pre>
+  <div class="card">
+    <div class="card-body">
+      <?php $this->dispatch('test', 'denied') ?>
+    </div>
+  </div>
+</section>
 
-<h3>Dispatch grid based on array</h3>
-<pre>
-$this->dispatch('test', 'grid-array')
-</pre>
-<div>
-    <?= $this->dispatch('test', 'grid-array') ?>
-</div>
+<section class="mt-4">
+  <h3>Dispatch controller with grid based on array</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$this->dispatch('test', 'grid-array')</code></pre>
+  <div class="card">
+    <div class="card-body">
+      <?= $this->dispatch('test', 'grid-array') ?>
+    </div>
+  </div>
+</section>
 
-<h3>Dispatch grid based on SQL</h3>
-<pre>
-$this->dispatch('test', 'grid-sql')
-</pre>
-<div>
-    <?= $this->dispatch('test', 'grid-sql') ?>
-</div>
+<section class="mt-4">
+  <h3>Dispatch controller with grid based on SQL</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$this->dispatch('test', 'grid-sql')</code></pre>
+  <div class="card">
+    <div class="card-body">
+      <?= $this->dispatch('test', 'grid-sql') ?>
+    </div>
+  </div>
+</section>
+
+<section class="mt-4">
+  <h3>CLI</h3>
+  <hr/>
+  <p>
+    For test CLI you can run <code>php ./vendor/bin/bluzman run test/cli --env dev</code>.<br/>
+    You can find source code at <code>application/modules/test/controllers/cli.php</code>
+  </p>
+</section>

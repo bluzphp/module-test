@@ -42,7 +42,7 @@ class Table extends \Bluz\Db\Table
      */
     public function saveTestRow()
     {
-        return self::insert([ 'name' => 'Example #'.rand(1, 10), 'email' => 'example@example.com' ]);
+        return self::insert([ 'name' => 'Example #'.random_int(1, 10), 'email' => 'example@example.com' ]);
     }
 
     /**

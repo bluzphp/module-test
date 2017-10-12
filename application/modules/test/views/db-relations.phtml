@@ -1,48 +1,47 @@
 <?php
+
 use Application\Pages;
 use Bluz\Proxy\Db;
 
+require_once __DIR__ .'/partial/demo.phtml';
 ?>
-<h3>Example of usage DB methods</h3>
-<p class="text-warning">Please, never use <code>DB</code> adapter inside <code>View</code></p>
+<h2>Example of usage DB methods</h2>
+<p class="lead">Please, never use <code>DB</code> adapter inside <code>View</code></p>
+<hr/>
 
 <h3>Page Owner</h3>
-<code>
-Pages\Table::findRow(1)->getRelation('Users');
-</code>
+<hr/>
+<pre class="alert alert-secondary"><code>Pages\Table::findRow(1)->getRelation('Users');</code></pre>
 <?php
 $user = Pages\Table::findRow(1)->getRelation('Users');
-var_dump($user);
+demo($user);
 ?>
 
 <h3>User pages</h3>
-<code>
-$user->getRelations('Pages');
-</code>
+<hr/>
+<pre class="alert alert-secondary"><code>$user->getRelations('Pages');</code></pre>
 <?php
 $pages = $user->getRelations('Pages');
-var_dump($pages);
+demo($pages);
 ?>
 
 <h3>User roles</h3>
-<code>
-$user->getRelations('Roles');
-</code>
+<hr/>
+<pre class="alert alert-secondary"><code>$user->getRelations('Roles');</code></pre>
 <?php
 $roles = $user->getRelations('Roles');
-var_dump($roles);
+demo($roles);
 ?>
 
 <h3>User - Page relation</h3>
-<code>
-Db::fetchRelations(
-"SELECT '__users', u.*, '__pages', p.* FROM users u LEFT JOIN pages p ON p.userId = u.id"
-);
-</code>
+<hr/>
+<pre class="alert alert-secondary"><code>Db::fetchRelations(
+  "SELECT '__users', u.*, '__pages', p.* FROM users u LEFT JOIN pages p ON p.userId = u.id LIMIT 1"
+  );</code></pre>
 
 <?php
 $result = Db::fetchRelations(
-    "SELECT '__users', u.*, '__pages', p.* FROM users u LEFT JOIN pages p ON p.userId = u.id"
+    "SELECT '__users', u.*, '__pages', p.* FROM users u LEFT JOIN pages p ON p.userId = u.id LIMIT 1"
 );
-var_dump($result);
+demo($result);
 ?>

@@ -1,37 +1,29 @@
 <?php
 /**
- * Route with one param optional
+ * Router with other params
  *
  * @category Example
  *
  * @author   Anton Shevchuk
- * @created  12.06.12 13:08
+ * @created  18.12.13 18:39
  */
 namespace Application;
 
 use Bluz\Controller\Controller;
-use Bluz\Proxy\Layout;
 use Bluz\Proxy\Request;
 
 /**
- * @route /test/param/$
- * @route /test/param/{$a}/
- *
- * @param string $a
+ * @route /test/route-with-other-params/{$alias}(.*)
+ * @param string $alias
  * @return string
  */
-return function ($a = '42') {
+return function ($alias) {
     /**
      * @var Controller $this
      */
-    Layout::breadCrumbs(
-        [
-            Layout::ahref('Test', [ 'test', 'index' ]),
-            'Routers Examples',
-        ]
-    );
-
-    $a = esc($a);
+    $id = Request::getParam('id');
+    $alias = esc($alias);
+    $id = esc($id);
 
     $uri = Request::getUri();
     $module = Request::getModule();
@@ -40,14 +32,13 @@ return function ($a = '42') {
     $content = <<<CODE
 <p class="text-muted">$uri</p>
 <div class="alert alert-light"><pre><code>/**
- * @route /test/param/
- * @route /test/param/{\$a}/
- * @param string \$a
+ * @route /test/route-with-get-params/{$alias}(.*)
+ * @param string $alias
  */
- return function (\$a = '42') {
-     echo \$a; <em>// '$a'</em>
+ return function (\$alias) {
+     echo \$alias; <em>// '$alias'</em>
+     echo \$id;    <em>// '$id'</em>
  }</code></pre></div>
-
 CODE;
     $this->assign('title', $module .'/'. $controller);
     $this->assign('content', $content);

@@ -23,7 +23,8 @@ return function () {
     Layout::breadCrumbs(
         [
             Layout::ahref('Test', [ 'test', 'index' ]),
-            'DB Relations',
+            'Database',
+            'Relations',
         ]
     );
     // all examples inside view

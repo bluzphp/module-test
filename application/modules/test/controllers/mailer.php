@@ -14,12 +14,13 @@ use Bluz\Proxy\Layout;
 use Bluz\Proxy\Mailer;
 use Bluz\Proxy\Messages;
 use Bluz\Proxy\Request;
+use Bluz\Proxy\Response;
 
 /**
  * @param string $email
  * @return void
  */
-return function ($email = "no-reply@nixsolutions.com") {
+return function ($email = 'no-reply@nixsolutions.com') {
     /**
      * @var Controller $this
      */
@@ -33,12 +34,13 @@ return function ($email = "no-reply@nixsolutions.com") {
         try {
             $mail = Mailer::create();
             // subject
-            $mail->Subject = "Example of Bluz Mailer";
-            $mail->msgHTML("Hello!<br/>How are you?");
+            $mail->Subject = 'Example of Bluz Mailer';
+            $mail->msgHTML('Hello!<br/>How are you?');
             $mail->addAddress($email);
             Mailer::send($mail);
-            Messages::addSuccess("Email was send");
-        } catch (\Exception $e) {
+            Messages::addSuccess('Email was send');
+            Response::reload();
+        } catch (\phpmailerException $e) {
             Messages::addError($e->getMessage());
         }
     }

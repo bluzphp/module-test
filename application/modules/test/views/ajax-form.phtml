@@ -1,3 +1,4 @@
-<?php if (!empty($formName)) : ?>
-    <?= $this->partial('partial/' . $formName . '.phtml'); ?>
-<?php endif; ?>
+<?php
+if (!empty($formName)) :
+    echo $this->partial('partial/' . $formName . '.phtml');
+endif;

@@ -1,12 +1,26 @@
-<?
+<?php
 /**
  * @var Application\Users\Row $user
  */
+$enabled = \Bluz\Proxy\Config::getData('cache', 'enabled');
+
+if (!$enabled) :
+?>
+<h2>Cache is disabled</h2>
+<hr/>
+<p class="lead">
+  You can enable it in configuration file
+  <code>/application/configs/<?=Bluz\Application\Application::getInstance()->getEnvironment()?>/cache.php</code>
+</p>
+<?php
+else :
 ?>
 <h2>User data</h2>
+<hr/>
 <p>
-    Id: <?=$user->id?><br/>
-    Login: <?=$user->login?><br/>
-    Created: <?=$user->created?><br/>
-    Updated: <?=$user->updated?><br/>
+  Id: <?= $user->id ?><br/>
+  Login: <?= $user->login ?><br/>
+  Created: <?= $user->created ?><br/>
+  Updated: <?= $user->updated ?><br/>
 </p>
+<?php endif; ?>

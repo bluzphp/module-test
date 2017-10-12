@@ -1,36 +1,27 @@
 <?php
+
 use Application\Test;
 use Application\Users;
+
+require_once __DIR__ .'/partial/demo.phtml';
 ?>
-<h3>Example of usage DB methods</h3>
-<p class="text-warning">Please, never use <code>DB</code> adapter inside <code>View</code></p>
+<h2>Example of usage Db\Table methods</h2>
+<p class="lead">Please, never use <code>DB</code> adapter inside <code>View</code></p>
+<hr/>
 
-<h3>Page Owner</h3>
-<pre>
-<code>
-$table = Test\Table::getInstance();
+<h3>Users Table</h3>
+<hr/>
+<pre class="alert alert-secondary"><code>Users\Table::getColumns()</code></pre>
+<?php demo(Users\Table::getColumns()) ?>
+<pre class="alert alert-secondary"><code>Users\Table::findRow(1)</code></pre>
+<?php demo(Users\Table::findRow(1)) ?>
+<pre class="alert alert-secondary"><code>Users\Table::findRowWhere(['id' => 2])</code></pre>
+<?php demo(Users\Table::findRowWhere(['id' => 2])) ?>
 
-var_dump($table->saveTestRow());
-var_dump($table->updateTestRows());
-var_dump($table->deleteTestRows());
-
-$table = Users\Table::getInstance();
-
-var_dump($table->getColumns());
-var_dump($table->findRow([ '1' ]));
-var_dump($table->findRowWhere([ 'id' => '0' ]));
-</code>
-</pre>
-<?php
-$table = Test\Table::getInstance();
-
-var_dump($table->saveTestRow());
-var_dump($table->updateTestRows());
-var_dump($table->deleteTestRows());
-
-$table = Users\Table::getInstance();
-
-var_dump($table->getColumns());
-var_dump($table->findRow([ '1' ]));
-var_dump($table->findRowWhere([ 'id' => '0' ]));
-?>
+<h3>Test Table</h3>
+<hr/>
+<?php $table = Test\Table::getInstance();?>
+<pre class="alert alert-secondary"><code>$table = Test\Table::getInstance();
+$table->saveTestRow();    <em>// <?=$table->saveTestRow()?></em>
+$table->updateTestRows(); <em>// <?=$table->updateTestRows()?></em>
+$table->deleteTestRows(); <em>// <?=$table->deleteTestRows()?></em></code></pre>

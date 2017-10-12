@@ -22,7 +22,8 @@ return function () {
     Layout::breadCrumbs(
         [
             Layout::ahref('Test', [ 'test', 'index' ]),
-            'Basic DB operations',
+            'Database',
+            'DB package',
         ]
     );
     // all examples inside view

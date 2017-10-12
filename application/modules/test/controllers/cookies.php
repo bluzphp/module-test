@@ -16,7 +16,7 @@ use Bluz\Proxy\Layout;
 use Bluz\Proxy\Response;
 
 /**
- * @return void
+ * @return string
  */
 return function () {
     /**
@@ -37,5 +37,8 @@ return function () {
     Response::setCookie('response', 'call');
     Response::setCookie('time', 'hour', time()+3600);
 
-    $this->disableView();
+    $this->assign('title', 'Cookies');
+    $this->assign('content', 'Check `hello` and `time` cookies');
+
+    return 'modal.phtml';
 };

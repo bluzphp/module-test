@@ -1,13 +1,32 @@
 <?php
+
 use Bluz\Proxy\Layout;
 
 /** @var \Bluz\View\View $this */
-Layout::breadCrumbs([
-    $this->ahref('Test', ['test', 'index']),
-    'Cache View',
-]);
-$url = $this->url('test', 'cache-controller', ['a' => random_int(1,5)]);
+Layout::breadCrumbs(
+    [
+        $this->ahref('Test', ['test', 'index']),
+        'Cache',
+        'View variables',
+    ]
+);
+$url = $this->url('test', 'cache-controller', ['a' => random_int(1, 5)]);
+
+$enabled = \Bluz\Proxy\Config::getData('cache', 'enabled');
+
+if (!$enabled) :
 ?>
-<h3><?=$current?></h3>
-<p>Try to reload this page (page cache is 2 minutes)</p>
-<p>Cache is dependency to controller arguments, try it <a href="<?=$url?>"><?=$url?></a> </p>
+<h2>Cache is disabled</h2>
+<hr/>
+<p class="lead">
+  You can enable it in configuration file
+  <code>/application/configs/<?=Bluz\Application\Application::getInstance()->getEnvironment()?>/cache.php</code>
+</p>
+<?php
+else :
+?>
+<h2><?= $current ?></h2>
+<hr/>
+<p class="lead">Try to reload this page (cache lifetime is 2 minutes)</p>
+<p>Cache is dependency to controller arguments, try it <a href="<?= $url ?>"><?= $url ?></a></p>
+<?php endif; ?>

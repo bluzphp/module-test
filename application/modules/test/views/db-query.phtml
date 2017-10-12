@@ -1,14 +1,19 @@
 <?php
+
 use Application\Test;
 use Bluz\Proxy\Db;
 
+require_once __DIR__ .'/partial/demo.phtml';
 ?>
-<h3>Example of usage Db Query Builders</h3>
-<p class="text-warning">Please, never use <code>Db</code> or <code>Query</code> inside <code>View</code></p>
+<h2>Example of usage Db Query Builders</h2>
+<p class="lead">Please, never use <code>Db</code> or <code>Query</code> inside <code>View</code></p>
+<hr/>
 
-<h4>Select</h4>
-<pre>
-$selectBuilder = Db::select('u.*', 'ua.*')
+
+<section class="mt-4">
+  <h3>Select</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$selectBuilder = Db::select('u.*', 'ua.*')
     ->from('users', 'u')
     ->leftJoin('u', 'users_actions', 'ua', 'ua.userId = u.id')
     ->where('u.id = ? OR u.id = ?', 4, 5)
@@ -17,72 +22,71 @@ $selectBuilder = Db::select('u.*', 'ua.*')
     ->orWhere('u.login LIKE (?)', 'A%')
     ->orderBy('u.id')
     ->addOrderBy('u.login')
-    ->limit(5);
-echo $selectBuilder->getQuery();
-</pre>
-<pre><?php
-$selectBuilder = Db::select('u.*', 'ua.*')
-    ->from('users', 'u')
-    ->leftJoin('u', 'users_actions', 'ua', 'ua.userId = u.id')
-    ->where('u.id = ? OR u.id = ?', 4, 5)
-    ->orWhere('u.id IN (?)', [4, 5])
-    ->andWhere('u.status = ? OR u.status = ?', 'active', 'pending')
-    ->orWhere('u.login LIKE (?)', 'A%')
-    ->orderBy('u.id')
-    ->addOrderBy('u.login')
-    ->limit(5);
-echo $selectBuilder->getQuery();
-?></pre>
+    ->limit(5);</code></pre>
+  <div>
+  <?php
+      $selectBuilder = Db::select('u.*', 'ua.*')
+          ->from('users', 'u')
+          ->leftJoin('u', 'users_actions', 'ua', 'ua.userId = u.id')
+          ->where('u.id = ? OR u.id = ?', 4, 5)
+          ->orWhere('u.id IN (?)', [4, 5])
+          ->andWhere('u.status = ? OR u.status = ?', 'active', 'pending')
+          ->orWhere('u.login LIKE (?)', 'A%')
+          ->orderBy('u.id')
+          ->addOrderBy('u.login')
+          ->limit(5);
+      demo($selectBuilder->getQuery());
+  ?>
+</section>
 
-<h4>Insert</h4>
-<pre>
-$insertBuilder = Db::insert('users`')
-        ->set('login', 'example')
-        ->set('email', 'example@domain.com');
-echo $insertBuilder->getQuery()
-</pre>
-<pre><?php
-$insertBuilder = Db::insert('users`')
+<section class="mt-4">
+  <h3>Insert</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$insertBuilder = Db::insert('users')
     ->set('login', 'example')
-    ->set('email', 'example@domain.com');
-echo $insertBuilder->getQuery();
-?></pre>
+    ->set('email', 'example@domain.com');</code></pre>
+  <?php
+      $insertBuilder = Db::insert('users')
+          ->set('login', 'example')
+          ->set('email', 'example@domain.com');
+      demo($insertBuilder->getQuery());
+  ?>
+</section>
 
-<h4>Update</h4>
-<pre>
-$updateBuilder = Db::update('users')
+<section class="mt-4">
+  <h3>Update</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$updateBuilder = Db::update('users')
     ->setArray(
         [
             'status' => 'active',
             'updated' => date('Y-m-d H:i:s')
         ]
     )
-    ->where('id = ?', 30);
-echo $updateBuilder->getQuery();
-</pre>
-<pre><?php
-$updateBuilder = Db::update('users')
-    ->setArray(
-        [
-            'status' => 'active',
-            'updated' => date('Y-m-d H:i:s')
-        ]
-    )
-    ->where('id = ?', 30);
-echo $updateBuilder->getQuery();
-?></pre>
+    ->where('id = ?', 30);</code></pre>
+  <?php
+      $updateBuilder = Db::update('users')
+          ->setArray(
+              [
+                  'status' => 'active',
+                  'updated' => date('Y-m-d H:i:s')
+              ]
+          )
+          ->where('id = ?', 30);
+      demo($updateBuilder->getQuery());
+  ?>
+</section>
 
-
-<h4>Delete</h4>
-<pre>
-$deleteBuilder = Db::delete('users')
+<section class="mt-4">
+  <h3>Delete</h3>
+  <hr/>
+  <pre class="alert alert-secondary"><code>$deleteBuilder = Db::delete('users')
     ->where('id = ?', 5)
-    ->limit(1);
-echo $deleteBuilder->getQuery()
-</pre>
-<pre><?php
-$deleteBuilder = Db::delete('users')
-    ->where('id = ?', 5)
-    ->limit(1);
-echo $deleteBuilder->getQuery();
-?></pre>
+    ->limit(1);</code></pre>
+  <?php
+      $deleteBuilder = Db::delete('users')
+          ->where('id = ?', 5)
+          ->limit(1);
+      demo($deleteBuilder->getQuery());
+  ?>
+</section>

@@ -16,7 +16,7 @@ use Bluz\Proxy\Request;
 /**
  * @route /static-route/
  * @route /another-route.html
- * @return false
+ * @return string
  */
 return function () {
     /**
@@ -32,16 +32,14 @@ return function () {
     $uri = Request::getUri();
     $module = Request::getModule();
     $controller = Request::getController();
-    echo <<<CODE
-<h4>URL: $uri</h4>
-<h4>Route: $module/$controller</h4>
-<pre>
-/**
+    $content = <<<CODE
+<p class="text-muted">$uri</p>
+<div class="alert alert-light"><pre><code>/**
  * @route /static-route/
  * @route /another-route.html
- * @return \closure
- */
-</pre>
+ */</code></pre></div>
 CODE;
-    return false;
+    $this->assign('title', $module .'/'. $controller);
+    $this->assign('content', $content);
+    return 'modal.phtml';
 };

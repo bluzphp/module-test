@@ -4,65 +4,70 @@ $this->headScript($this->baseUrl('js/test/config.js'));
 echo $this->scriptBlock('require(["test/backbone"]);');
 ?>
 <style>
-    #test-list {
-        list-style: none;
-    }
-    #test-list li {
-        margin-bottom: 4px;
-        width: 244px;
-    }
-    #test-list li label {
-        width: 180px;
-        margin-right: 4px;
-    }
-    #test-list li.editing {
-        padding: 6px 15px;
-    }
-    #test-list li.editing .edit {
-        display: block;
-    }
-    #test-list li.editing .view {
-        display: none;
-    }
-    #test-list li .edit {
-        display: none;
-    }
+  #test-list {
+    list-style: none;
+  }
+  #test-list li {
+    margin-bottom: 4px;
+    width: 280px;
+  }
+  #test-list li label {
+    width: 180px;
+    margin: 4px;
+  }
+  #test-list li.editing {
+    padding: 6px 15px;
+  }
+  #test-list li.editing .edit {
+    display: block;
+  }
+  #test-list li.editing .view {
+    display: none;
+  }
+  #test-list li .edit {
+    display: none;
+  }
 </style>
 <!-- Template -->
 <script type="text/template" id="item-template">
-    <div class="view">
-        <label class="btn btn-xs btn-default"><%- name %></label>
-        <a class="destroy btn btn-xs btn-danger confirm"><span class="fa fa-times"></span></a>
-    </div>
-    <input class="edit form-control" type="text" value="<%- name %>" />
+  <div class="view">
+    <label class="btn btn-xs btn-light"><%- name %></label>
+    <a class="destroy btn btn-xs btn-danger confirm"><span class="fa fa-times text-light"></span></a>
+  </div>
+  <input class="edit form-control" type="text" value="<%- name %>"/>
 </script>
 <script type="text/template" id="pager-template">
-    <% if (model.pages > 1) { %>
+  <% if (model.pages > 1) { %>
+  <nav aria-label="<?= __('Pagination') ?>">
     <ul class="pagination">
-        <li <% if (model.page == 1) {%> class="disabled" <%}%>><a href="#" <% if (model.page > 1) {%> data-page="<%= model.page-1 %>" <%}%>>&laquo;</a></li>
-        <% for (i = 1; i <= model.pages; i++ ) { %>
-        <li <% if (model.page == i) {%> class="active" <%}%>><a href="#" data-page="<%= i %>"><%= i %></a></li>
-        <% }; %>
-        <li <% if (model.page == model.pages) {%> class="disabled" <%}%>><a href="#" <% if (model.page < model.pages) {%> data-page="<%= model.page+1 %>" <%}%>>&raquo;</a></li>
+      <li class="page-item <% if (model.page == 1) {%> disabled <%}%>"><a href="#" class="page-link" <% if (model.page >
+        1) {%> data-page="<%= model.page-1 %>" <%}%>>&laquo;</a></li>
+      <% for (i = 1; i <= model.pages; i++ ) { %>
+      <li class="page-item <% if (model.page == i) {%> active <%}%>"><a href="#" class="page-link" data-page="<%= i %>"><%=
+          i %></a></li>
+      <% }; %>
+      <li class="page-item <% if (model.page == model.pages) {%> disabled <%}%>"><a href="#" class="page-link" <% if
+        (model.page < model.pages) {%> data-page="<%= model.page+1 %>" <%}%>>&raquo;</a></li>
     </ul>
-    <% } %>
+  </nav>
+  <% } %>
 </script>
 
 <div id="testapp">
-    <div id="header">
-        <h2>Create new record</h2>
-        <form id="create-form" class="form">
-            <label><input class="form-control" type="text" placeholder="Name"/></label>
-            <label><input class="form-control" type="email" placeholder="Email" /></label>
-            <button type="submit" class="btn btn-default">Create</button>
-        </form>
-    </div>
-    <hr/>
-    <div id="main">
-        <h2>List of records</h2>
-        <ul id="test-list" class="list-group"></ul>
-    </div>
-    <div id="footer">
+  <div id="header">
+    <h2>Create new record</h2>
+    <form id="create-form" class="form">
+      <label><input class="form-control" type="text" placeholder="Name"/></label>
+      <label><input class="form-control" type="email" placeholder="Email"/></label>
+      <button type="submit" class="btn btn-light">Create</button>
+    </form>
+  </div>
+  <hr/>
+  <div id="main">
+    <h2>List of records</h2>
+    <ul id="test-list" class="list-group"></ul>
+  </div>
+  <div id="footer">
 
-    </div>
+  </div>
 </div>
