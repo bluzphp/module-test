@@ -67,7 +67,7 @@ return function () {
     EventManager::attach(
         'testspace:event2',
         function (Event $event) {
-            echo "Never run".$event->getName();
+            echo 'Never run' . $event->getName();
         }
     );
 
@@ -77,6 +77,8 @@ return function () {
             return $event->getTarget()+1;
         }
     );
+
+    EventManager::trigger('testspace:initevent', 1);
 
     return [
         'result1' => EventManager::trigger('testevent', 1),
