@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  04.11.13 13:30
  */
+
 namespace Application;
 
 use Application\Options;
@@ -22,18 +23,18 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Options',
         ]
     );
 
     if ($example = Options\Table::get('example')) {
-        $message = sprintf('Option `example` was found, it is `%s`', (string) $example);
+        $message = sprintf('Option `example` was found, it is `%s`', (string)$example);
         Options\Table::remove('example');
     } else {
         $message = 'Option `example` not found, try again later';
         Options\Table::set('example', uniqid('example_'));
     }
-    
+
     $this->assign('message', $message);
 };

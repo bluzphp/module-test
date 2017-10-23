@@ -9,6 +9,7 @@
 /**
  * @namespace
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -24,7 +25,7 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Cookies',
         ]
     );
@@ -35,7 +36,7 @@ return function () {
 
     // use Response object
     Response::setCookie('response', 'call');
-    Response::setCookie('time', 'hour', time()+3600);
+    Response::setCookie('time', 'hour', time() + 3600);
 
     $this->assign('title', 'Cookies');
     $this->assign('content', 'Check `hello` and `time` cookies');

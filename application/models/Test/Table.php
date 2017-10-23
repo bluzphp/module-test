@@ -1,12 +1,11 @@
 <?php
 /**
  * @copyright Bluz PHP Team
- * @link https://github.com/bluzphp/skeleton
+ * @link      https://github.com/bluzphp/skeleton
  */
 
-/**
- * @namespace
- */
+declare(strict_types=1);
+
 namespace Application\Test;
 
 /**
@@ -31,6 +30,7 @@ class Table extends \Bluz\Db\Table
 
     /**
      * Primary key(s)
+     *
      * @var array
      */
     protected $primary = array('id');
@@ -42,7 +42,7 @@ class Table extends \Bluz\Db\Table
      */
     public function saveTestRow()
     {
-        return self::insert([ 'name' => 'Example #'.random_int(1, 10), 'email' => 'example@example.com' ]);
+        return self::insert(['name' => 'Example #' . random_int(1, 10), 'email' => 'example@example.com']);
     }
 
     /**
@@ -52,7 +52,7 @@ class Table extends \Bluz\Db\Table
      */
     public function updateTestRows()
     {
-        return self::update([ 'email' => 'example2@example.com' ], [ 'email' => 'example@example.com' ]);
+        return self::update(['email' => 'example2@example.com'], ['email' => 'example@example.com']);
     }
 
     /**
@@ -62,6 +62,6 @@ class Table extends \Bluz\Db\Table
      */
     public function deleteTestRows()
     {
-        return self::delete([ 'email' => 'example2@example.com' ]);
+        return self::delete(['email' => 'example2@example.com']);
     }
 }

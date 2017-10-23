@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  18.11.12 19:41
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -15,6 +16,7 @@ use Bluz\Controller\Controller;
  * @method CLI
  *
  * @param bool $flag
+ *
  * @return array
  */
 return function ($flag = false) {
@@ -25,5 +27,5 @@ return function ($flag = false) {
         $this->assign('flag', 'true');
     }
 
-    return [ 'string' => 'bar', 'array' => [ 'some', 'array' ] ];
+    return ['string' => 'bar', 'array' => ['some', 'array']];
 };

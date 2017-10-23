@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  12.06.12 13:08
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -15,9 +16,11 @@ use Bluz\Proxy\Request;
 
 /**
  * @route /{$a}-{$b}-{$c}/
- * @param int $a
- * @param float $b
+ *
+ * @param int    $a
+ * @param float  $b
  * @param string $c
+ *
  * @return string
  */
 return function ($a, $b, $c) {
@@ -26,7 +29,7 @@ return function ($a, $b, $c) {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Routers Examples',
         ]
     );
@@ -52,7 +55,7 @@ return function ($a, $b, $c) {
      echo \$c; <em>// '$c'</em>
  }</code></pre></div>
 CODE;
-    $this->assign('title', $module .'/'. $controller);
+    $this->assign('title', $module . '/' . $controller);
     $this->assign('content', $content);
     return 'modal.phtml';
 };

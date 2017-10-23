@@ -7,13 +7,14 @@
  * @author   Anton Shevchuk
  * @created  21.05.13 16:55
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
 
 /**
- * @accept HTML
- * @accept JSON
+ * @accept    HTML
+ * @accept    JSON
  * @privilege Denied
  *
  * @return void

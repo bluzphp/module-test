@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  16.03.12 15:21
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -23,7 +24,7 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Events',
         ]
     );
@@ -31,35 +32,35 @@ return function () {
     EventManager::attach(
         'testevent',
         function (Event $event) {
-            return $event->getTarget()*2;
+            return $event->getTarget() * 2;
         }
     );
 
     EventManager::attach(
         'testevent',
         function (Event $event) {
-            return $event->getTarget()*2;
+            return $event->getTarget() * 2;
         }
     );
 
     EventManager::attach(
         'testspace:event',
         function (Event $event) {
-            return $event->getTarget()+4;
+            return $event->getTarget() + 4;
         }
     );
 
     EventManager::attach(
         'testspace:event',
         function (Event $event) {
-            return $event->getTarget()+2;
+            return $event->getTarget() + 2;
         }
     );
 
     EventManager::attach(
         'testspace:event2',
         function (Event $event) {
-            $event->setTarget($event->getTarget()+5);
+            $event->setTarget($event->getTarget() + 5);
             return false;
         }
     );
@@ -74,7 +75,7 @@ return function () {
     EventManager::attach(
         'testspace',
         function (Event $event) {
-            return $event->getTarget()+1;
+            return $event->getTarget() + 1;
         }
     );
 

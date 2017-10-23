@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  13.10.11 12:39
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -21,13 +22,15 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'View Partial Helpers',
         ]
     );
-    return [ 'data' => [
-        'first'=> array(2, 3, 4, 5),
-        'second'=> array(9, 8, 7, 6),
-        'third'=> array(1, 3, 5, 7),
-    ] ];
+    return [
+        'data' => [
+            'first' => [2, 3, 4, 5],
+            'second' => [9, 8, 7, 6],
+            'third' => [1, 3, 5, 7],
+        ]
+    ];
 };

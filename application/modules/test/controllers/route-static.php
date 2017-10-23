@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  12.06.12 13:08
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -24,7 +25,7 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Routers Examples',
         ]
     );
@@ -39,7 +40,7 @@ return function () {
  * @route /another-route.html
  */</code></pre></div>
 CODE;
-    $this->assign('title', $module .'/'. $controller);
+    $this->assign('title', $module . '/' . $controller);
     $this->assign('content', $content);
     return 'modal.phtml';
 };

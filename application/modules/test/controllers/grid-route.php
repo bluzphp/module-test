@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  27.08.12 10:08
  */
+
 namespace Application;
 
 use Application\Test;
@@ -17,7 +18,9 @@ use Bluz\Proxy\Layout;
  * Example of Grid with custom route
  *
  * @route  /example/{$alias}
+ *
  * @param  string $alias
+ *
  * @return string
  */
 return function ($alias) {
@@ -26,7 +29,7 @@ return function ($alias) {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Grid',
             'Request params',
         ]
@@ -34,7 +37,7 @@ return function ($alias) {
     $grid = new Test\SelectGrid();
     $grid->setModule($this->module);
     $grid->setController($this->controller);
-    $grid->setParams([ 'alias'=>$alias ]);
+    $grid->setParams(['alias' => $alias]);
 
     $this->assign('grid', $grid);
 

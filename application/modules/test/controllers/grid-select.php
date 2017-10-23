@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  27.08.12 10:08
  */
+
 namespace Application;
 
 use Application\Test;
@@ -22,7 +23,7 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Grid',
             'Select source',
         ]

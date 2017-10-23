@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  18.12.13 18:39
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -14,7 +15,9 @@ use Bluz\Proxy\Request;
 
 /**
  * @route /test/route-with-other-params/{$alias}(.*)
+ *
  * @param string $alias
+ *
  * @return string
  */
 return function ($alias) {
@@ -40,7 +43,7 @@ return function ($alias) {
      echo \$id;    <em>// '$id'</em>
  }</code></pre></div>
 CODE;
-    $this->assign('title', $module .'/'. $controller);
+    $this->assign('title', $module . '/' . $controller);
     $this->assign('content', $content);
     return 'modal.phtml';
 };

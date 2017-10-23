@@ -4,8 +4,9 @@
  *
  * @category Example
  *
- * @author  Volkov Sergey
+ * @author   Volkov Sergey
  */
+
 namespace Application;
 
 use Application\Test;
@@ -21,7 +22,7 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Grid',
             'Filters',
         ]

@@ -11,6 +11,7 @@
 /**
  * @namespace
  */
+
 namespace Application;
 
 /**

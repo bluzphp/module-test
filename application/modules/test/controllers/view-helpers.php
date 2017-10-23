@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  14.05.13 16:12
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -14,9 +15,10 @@ use Bluz\Proxy\Layout;
 use Bluz\Proxy\Request;
 
 /**
- * @param  bool $sex
+ * @param  bool   $sex
  * @param  string $car
- * @param  bool $remember
+ * @param  bool   $remember
+ *
  * @return void
  */
 return function ($sex = false, $car = 'none', $remember = false) {
@@ -25,7 +27,7 @@ return function ($sex = false, $car = 'none', $remember = false) {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'View Form Helpers',
         ]
     );

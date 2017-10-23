@@ -8,6 +8,7 @@
 /**
  * @namespace
  */
+
 namespace Application;
 
 use Bluz\Proxy\Logger;
