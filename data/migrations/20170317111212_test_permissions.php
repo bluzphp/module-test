@@ -9,7 +9,7 @@ use Phinx\Migration\AbstractMigration;
 /**
  * CreateTestTable
  */
-class ModuleTestPermissions extends AbstractMigration
+class TestPermissions extends AbstractMigration
 {
     /**
      * Migrate Up.
