@@ -1,8 +1,10 @@
 <?php
 /**
  * @copyright Bluz PHP Team
- * @link https://github.com/bluzphp/skeleton
+ * @link      https://github.com/bluzphp/skeleton
  */
+
+declare(strict_types=1);
 
 namespace Application\Test;
 

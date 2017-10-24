@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  12.06.12 13:08
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -21,7 +22,7 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Routers Examples',
         ]
     );

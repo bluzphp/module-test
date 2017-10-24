@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  27.08.12 10:08
  */
+
 namespace Application;
 
 use Application\Test;
@@ -22,7 +23,7 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Grid',
             'Table as Select source',
         ]
@@ -32,6 +33,6 @@ return function () {
     $grid->setController($this->controller);
 
     $this->assign('grid', $grid);
-    
+
     return 'grid-sql.phtml';
 };

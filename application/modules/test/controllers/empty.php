@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  22.08.12 17:14
  */
+
 namespace Application;
 
 use Bluz\Proxy\Layout;
@@ -17,7 +18,7 @@ use Bluz\Proxy\Layout;
 return function () {
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Empty',
         ]
     );

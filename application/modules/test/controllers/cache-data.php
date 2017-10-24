@@ -7,6 +7,7 @@
  * @author   dark
  * @created  08.07.11 13:23
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -15,6 +16,7 @@ use Bluz\Proxy\Layout;
 
 /**
  * @param  int $id
+ *
  * @return void
  * @throws \Exception
  */
@@ -24,7 +26,7 @@ return function ($id = null) {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Cache',
             'Data',
         ]
@@ -43,9 +45,9 @@ return function ($id = null) {
     /**
      * @var Users\Row $userRow
      */
-    if (!$userRow = Cache::get('user.'.$id)) {
+    if (!$userRow = Cache::get('user.' . $id)) {
         $userRow = Users\Table::findRow($id);
-        Cache::set('user.'.$id, $userRow, 30);
+        Cache::set('user.' . $id, $userRow, 30);
     };
 
     if (!$userRow) {

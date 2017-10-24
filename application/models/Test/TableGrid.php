@@ -1,12 +1,11 @@
 <?php
 /**
  * @copyright Bluz PHP Team
- * @link https://github.com/bluzphp/skeleton
+ * @link      https://github.com/bluzphp/skeleton
  */
 
-/**
- * @namespace
- */
+declare(strict_types=1);
+
 namespace Application\Test;
 
 use Bluz\Grid\Grid;
@@ -38,8 +37,8 @@ class TableGrid extends Grid
 
         $this->setAdapter($adapter);
         $this->setDefaultLimit(15);
-        $this->setAllowOrders([ 'name', 'id', 'status' ]);
-        $this->setAllowFilters([ 'status', 'id' ]);
+        $this->setAllowOrders(['name', 'id', 'status']);
+        $this->setAllowFilters(['status', 'id']);
 
         return $this;
     }

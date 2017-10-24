@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  07.09.12 18:28
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -18,6 +19,7 @@ use Bluz\Proxy\Response;
 
 /**
  * @param string $email
+ *
  * @return void
  */
 return function ($email = 'no-reply@nixsolutions.com') {
@@ -26,7 +28,7 @@ return function ($email = 'no-reply@nixsolutions.com') {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Mailer Example',
         ]
     );

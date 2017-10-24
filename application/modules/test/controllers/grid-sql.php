@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  27.08.12 10:08
  */
+
 namespace Application;
 
 use Application\Test;
@@ -22,7 +23,7 @@ return function () {
      */
     Layout::breadCrumbs(
         [
-            Layout::ahref('Test', [ 'test', 'index' ]),
+            Layout::ahref('Test', ['test', 'index']),
             'Grid',
             'SQL query',
         ]
@@ -31,7 +32,7 @@ return function () {
     $grid->setModule($this->module);
     $grid->setController($this->controller);
     // just example of same custom param for build URL
-    $grid->setParams([ 'id'=>5 ]);
+    $grid->setParams(['id' => 5]);
 
     $this->assign('grid', $grid);
 };

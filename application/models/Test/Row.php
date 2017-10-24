@@ -1,8 +1,10 @@
 <?php
 /**
  * @copyright Bluz PHP Team
- * @link https://github.com/bluzphp/skeleton
+ * @link      https://github.com/bluzphp/skeleton
  */
+
+declare(strict_types=1);
 
 namespace Application\Test;
 
@@ -14,9 +16,9 @@ use Bluz\Validator\Traits\Validator;
  * @package  Application\Test
  *
  * @property integer $id
- * @property string $name
- * @property string $email
- * @property string $status enum('active','disable','delete')
+ * @property string  $name
+ * @property string  $email
+ * @property string  $status enum('active','disable','delete')
  *
  * @SWG\Definition(definition="test", title="test", required={"id", "name", "email"})
  * @SWG\Property(property="id", type="integer")
@@ -30,6 +32,7 @@ class Row extends \Bluz\Db\Row
 
     /**
      * Before Insert/Update
+     *
      * @return void
      */
     protected function beforeSave()

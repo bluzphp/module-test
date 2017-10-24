@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  26.09.11 17:41
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -18,6 +19,7 @@ use Bluz\Proxy\Request;
  * @accept JSON
  *
  * @param bool $messages
+ *
  * @return void
  */
 return function ($messages = false) {
@@ -32,7 +34,7 @@ return function ($messages = false) {
 
         $this->assign('baz', 'qux');
     }
-    Messages::addNotice('Method '.Request::getMethod());
+    Messages::addNotice('Method ' . Request::getMethod());
 
     $this->assign('foo', 'bar');
 };

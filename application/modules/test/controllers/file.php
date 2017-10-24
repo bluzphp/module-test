@@ -7,6 +7,7 @@
  * @author   Anton Shevchuk
  * @created  29.01.15 15:23
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -24,5 +25,5 @@ return function () {
     Response::addHeader('Cache-Control', 'must-revalidate');
     Response::addHeader('Pragma', 'public');
 
-    $this->attachment(PATH_PUBLIC.'/img/loading.gif');
+    $this->attachment(PATH_PUBLIC . '/img/loading.gif');
 };
