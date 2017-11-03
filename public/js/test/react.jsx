@@ -233,11 +233,11 @@ define(
             {this.props.status}
           </td>
           <td>
-            <button type="button" className="btn btn-light btn-xs" onClick={this.handleClickEdit}>
+            <button type="button" className="btn btn-light" onClick={this.handleClickEdit}>
               <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             </button>
             &nbsp;
-            <button type="button" className="btn btn-danger btn-xs" onClick={this.handleClickDelete}>
+            <button type="button" className="btn btn-danger" onClick={this.handleClickDelete}>
               <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
           </td>
