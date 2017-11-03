@@ -239,30 +239,32 @@ $this->headScript($this->baseUrl('js/test/config.js'));
       <?= $this->ahref(
           'Ajax + Messages',
           ['test', 'ajax'],
-          ['class' => 'btn btn-light', 'data-ajax' => 1, 'data-messages' => true]
+          ['class' => 'btn btn-light', 'data-ajax', 'data-messages' => true]
       ); ?>
       <?= $this->ahref(
           'Ajax + Confirm',
           ['test', 'ajax'],
-          ['class' => 'btn btn-warning', 'data-ajax' => 1, 'data-confirm' => 1]
+          ['class' => 'btn btn-warning', 'data-ajax', 'data-confirm']
       ); ?>
       <?= $this->ahref(
           'Load HTML',
           ['test', 'ajax-html'],
-          ['class' => 'btn btn-light', 'data-ajax-load' => 1, 'data-ajax-target' => '#load']
+          ['class' => 'btn btn-light', 'data-ajax-load', 'data-ajax-target' => '#load']
       ); ?>
       <?= $this->ahref(
           'Load + Confirm',
           ['test', 'ajax-html'],
-          ['class' => 'btn btn-warning', 'data-ajax-load' => 1, 'data-ajax-target' => '#load', 'data-confirm' => 'Are you wand to load data from server?']
+          ['class' => 'btn btn-warning', 'data-ajax-load', 'data-ajax-target' => '#load', 'data-confirm' => 'Are you wand to load data from server?']
       ); ?>
     <div>
-      <select class="form-control" name="formName" data-ajax-load data-ajax-source="/test/ajax-form"
-                     data-ajax-target="#load">
-        <option value="">Select Form</option>
-        <option value="first-form">First</option>
-        <option value="second-form">Second</option>
-      </select>
+    <select class="form-control" name="formName"
+            data-ajax-load
+            data-ajax-source="/test/ajax-form"
+            data-ajax-target="#load">
+      <option value="">Select Form</option>
+      <option value="first-form">First</option>
+      <option value="second-form">Second</option>
+    </select>
     </div>
   </div>
   <hr/>
