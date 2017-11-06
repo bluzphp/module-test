@@ -23,8 +23,8 @@ if (!$grid) {
     <a href="<?= $grid->filter('id', 'ne', 42, false) ?>">AND without user with Id = 42</a> <br/>
   </p>
   <div class="input-group">
-    <a href="<?= $this->url('test', 'crud') ?>" class="btn btn-primary pull-left dialog"
-       data-ajax-method="get">Create</a>
+    <a href="<?= $this->url('test', 'crud') ?>" class="btn btn-primary pull-left"
+       data-ajax-dialog data-ajax-method="get">Create</a>
   </div>
   <hr/>
   <?= $this->partial('grid/total.phtml', ['grid' => $grid]) ?>
@@ -46,12 +46,12 @@ if (!$grid) {
         <td><?= $row['name'] ?></td>
         <td><?= $row['status'] ?></td>
         <td class="controls">
-          <a href="<?= $this->url('test', 'crud', ['id' => $row['id']]) ?>" class="btn btn-xs btn-primary dialog"
-             data-ajax-method="get">
+          <a href="<?= $this->url('test', 'crud', ['id' => $row['id']]) ?>" class="btn btn-primary"
+             data-ajax-dialog data-ajax-method="get">
             <i class="fa fa-pencil"></i>
           </a>
-          <a href="<?= $this->url('test', 'crud', ['id' => $row['id']]) ?>" class="confirm btn btn-xs btn-danger ajax"
-             data-ajax-method="delete">
+          <a href="<?= $this->url('test', 'crud', ['id' => $row['id']]) ?>" class="btn btn-danger"
+             data-confirm data-ajax data-ajax-method="delete">
             <i class="fa fa-times"></i>
           </a>
         </td>

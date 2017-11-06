@@ -97,22 +97,22 @@ $this->headScript($this->baseUrl('js/test/config.js'));
         <?= $this->ahref(
             'GET Record by ID:10',
             'test/rest/10',
-            ['class' => 'ajax btn btn-secondary', 'data-ajax-method' => 'GET']
+            ['class' => 'btn btn-secondary', 'data-ajax', 'data-ajax-method' => 'GET']
         ); ?>
         <?= $this->ahref(
             'HEAD Record by ID:10',
             'test/rest/10',
-            ['class' => 'ajax btn btn-secondary', 'data-ajax-method' => 'HEAD']
+            ['class' => 'btn btn-secondary', 'data-ajax', 'data-ajax-method' => 'HEAD']
         ); ?>
         <?= $this->ahref(
             'GET 10 Records',
             ['test', 'rest'],
-            ['class' => 'ajax btn btn-secondary', 'data-ajax-method' => 'GET', 'id' => 'rest-get']
+            ['class' => 'btn btn-secondary', 'data-ajax', 'data-ajax-method' => 'GET', 'id' => 'rest-get']
         ); ?>
         <?= $this->ahref(
             'HEAD 10 Records',
             ['test', 'rest'],
-            ['class' => 'ajax btn btn-secondary', 'data-ajax-method' => 'HEAD']
+            ['class' => 'btn btn-secondary', 'data-ajax', 'data-ajax-method' => 'HEAD']
         ); ?>
     </div>
     <hr/>
@@ -121,7 +121,8 @@ $this->headScript($this->baseUrl('js/test/config.js'));
           '<span class="badge badge-dark">1</span> POST Create Record',
           ['test', 'rest'],
           [
-              'class' => 'ajax btn btn-primary',
+              'class' => 'btn btn-primary',
+              'data-ajax',
               'data-ajax-method' => 'POST',
               'data-name' => 'Name',
               'data-email' => 'email@bluz.com'
@@ -130,17 +131,17 @@ $this->headScript($this->baseUrl('js/test/config.js'));
       <?= $this->ahref(
           '<span class="badge badge-dark">2</span> GET Record',
           '/test/rest/10',
-          ['class' => 'ajax btn btn-success', 'data-ajax-method' => 'GET']
+          ['class' => 'btn btn-success', 'data-ajax', 'data-ajax-method' => 'GET']
       ); ?>
       <?= $this->ahref(
           '<span class="badge badge-dark">3</span> PUT Edit Record',
           '/test/rest/10',
-          ['class' => 'ajax btn btn-warning', 'data-ajax-method' => 'PUT', 'data-name' => 'New Name']
+          ['class' => 'btn btn-warning', 'data-ajax', 'data-ajax-method' => 'PUT', 'data-name' => 'New Name']
       ); ?>
       <?= $this->ahref(
           '<span class="badge badge-dark">4</span> DELETE Record',
           '/test/rest/10',
-          ['class' => 'ajax btn btn-danger', 'data-ajax-method' => 'DELETE']
+          ['class' => 'btn btn-danger', 'data-ajax', 'data-ajax-method' => 'DELETE']
       ); ?>
     </div>
     <hr/>
@@ -180,24 +181,26 @@ $this->headScript($this->baseUrl('js/test/config.js'));
   <hr/>
   <p>You can send AJAX calls over <code>GET</code>, <code>POST</code>, <code>PUT</code> or <code>DELETE</code> HTTPs' methods</p>
   <div class="alert alert-secondary d-flex justify-content-between">
-    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" class="ajax" data-ajax-method="get"&gt;GET&lt;/a&gt</code></pre>
-    <?= $this->ahref('GET', ['test', 'ajax'], ['class' => 'ajax btn btn-success w-25', 'data-ajax-method' => 'GET']); ?>
+    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" data-ajax data-ajax-method="get"&gt;GET&lt;/a&gt</code></pre>
+    <?= $this->ahref('GET', ['test', 'ajax'], ['class' => 'btn btn-success w-25', 'data-ajax', 'data-ajax-method' => 'GET']); ?>
   </div>
   <div class="alert alert-secondary d-flex justify-content-between">
-    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" class="ajax" data-ajax-method="post"&gt;POST&lt;/a&gt</code></pre>
-      <?= $this->ahref('POST', ['test', 'ajax'], ['class' => 'ajax btn btn-primary w-25', 'data-ajax-method' => 'POST']); ?>
+    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" data-ajax data-ajax-method="post"&gt;POST&lt;/a&gt</code></pre>
+      <?= $this->ahref('POST', ['test', 'ajax'], ['class' => 'btn btn-primary w-25', 'data-ajax', 'data-ajax-method' => 'POST']); ?>
   </div>
   <div class="alert alert-secondary d-flex justify-content-between">
-    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" class="ajax" data-ajax-method="put"&gt;PUT&lt;/a&gt</code></pre>
-      <?= $this->ahref('PUT', ['test', 'ajax'], ['class' => 'ajax btn btn-warning w-25', 'data-ajax-method' => 'PUT']); ?>
+    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" data-ajax data-ajax-method="put"&gt;PUT&lt;/a&gt</code></pre>
+      <?= $this->ahref('PUT', ['test', 'ajax'], ['class' => 'btn btn-warning w-25', 'data-ajax', 'data-ajax-method' => 'PUT']); ?>
   </div>
   <div class="alert alert-secondary d-flex justify-content-between">
-    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" class="ajax" data-ajax-method="delete"&gt;DELETE&lt;/a&gt</code></pre>
-      <?= $this->ahref('DELETE', ['test', 'ajax'], ['class' => 'ajax btn btn-danger w-25', 'data-ajax-method' => 'DELETE']); ?>
+    <pre class="align-self-center mb-0"><code>&lt;a href="test/ajax" data-ajax data-ajax-method="delete"&gt;DELETE&lt;/a&gt</code></pre>
+      <?= $this->ahref('DELETE', ['test', 'ajax'], ['class' => 'btn btn-danger w-25', 'data-ajax', 'data-ajax-method' => 'DELETE']); ?>
   </div>
   <hr/>
   <div class="btn-group">
-    <a href="<?= $this->url('test', 'ajax') ?>" id="ajax-callback" class="btn btn-light ajax">AJAX call with trigger</a>
+    <a href="<?= $this->url('test', 'ajax') ?>" id="ajax-callback" class="btn btn-light" data-ajax>
+      AJAX call with trigger
+    </a>
   </div>
   <hr/>
   <p>Example of JavaScript:</p>
@@ -236,30 +239,32 @@ $this->headScript($this->baseUrl('js/test/config.js'));
       <?= $this->ahref(
           'Ajax + Messages',
           ['test', 'ajax'],
-          ['class' => 'ajax btn btn-light', 'data-messages' => true]
+          ['class' => 'btn btn-light', 'data-ajax', 'data-messages' => true]
       ); ?>
       <?= $this->ahref(
           'Ajax + Confirm',
           ['test', 'ajax'],
-          ['class' => 'ajax confirm btn btn-warning']
+          ['class' => 'btn btn-warning', 'data-ajax', 'data-confirm']
       ); ?>
       <?= $this->ahref(
           'Load HTML',
           ['test', 'ajax-html'],
-          ['class' => 'load btn btn-light', 'data-ajax-target' => '#load']
+          ['class' => 'btn btn-light', 'data-ajax-load', 'data-ajax-target' => '#load']
       ); ?>
       <?= $this->ahref(
           'Load + Confirm',
           ['test', 'ajax-html'],
-          ['class' => 'load confirm btn btn-warning', 'data-ajax-target' => '#load', 'data-confirm' => 'Are you wand to load data from server?']
+          ['class' => 'btn btn-warning', 'data-ajax-load', 'data-ajax-target' => '#load', 'data-confirm' => 'Are you wand to load data from server?']
       ); ?>
     <div>
-      <select class="form-control load" name="formName" data-ajax-source="/test/ajax-form"
-                     data-ajax-target="#load">
-        <option value="">Select Form</option>
-        <option value="first-form">First</option>
-        <option value="second-form">Second</option>
-      </select>
+    <select class="form-control" name="formName"
+            data-ajax-load
+            data-ajax-source="/test/ajax-form"
+            data-ajax-target="#load">
+      <option value="">Select Form</option>
+      <option value="first-form">First</option>
+      <option value="second-form">Second</option>
+    </select>
     </div>
   </div>
   <hr/>
@@ -270,9 +275,9 @@ $this->headScript($this->baseUrl('js/test/config.js'));
   <h3>Access denied</h3>
   <p class="text-muted">If you try to load forbidden pages, system would send notice to you</p>
   <div class="d-flex justify-content-around">
-    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger bluz-tooltip ajax" data-toggle="tooltip"
+    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger" data-toggle="tooltip" data-ajax
        title="Return error message">Denied page, AJAX call</a>
-    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger bluz-tooltip dialog" data-toggle="tooltip"
+    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger" data-toggle="tooltip" data-ajax
        title="Return error dialog">Denied page, AJAX dialog</a>
   </div>
   <hr/>

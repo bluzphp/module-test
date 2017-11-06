@@ -7,6 +7,7 @@
     <?php endforeach; ?>
 </dl>
 
-<a href="<?= $this->url('test', 'update', ['id' => $row->id]) ?>" class="btn dialog" data-ajax-method="GET">Edit</a>
-<a href="<?= $this->url('test', 'delete', ['id' => $row->id]) ?>" class="btn btn-danger ajax confirm"
-   data-ajax-method="DELETE">Delete</a>
+<a href="<?= $this->url('test', 'update', ['id' => $row->id]) ?>" class="btn"
+   data-aajax-dialog data-ajax-method="GET">Edit</a>
+<a href="<?= $this->url('test', 'delete', ['id' => $row->id]) ?>" class="btn btn-danger"
+   data-confirm data-ajax data-ajax-method="DELETE">Delete</a>

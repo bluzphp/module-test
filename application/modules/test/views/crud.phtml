@@ -1,5 +1,6 @@
 <?php $uid = uniqid('form_', false); ?>
-<form id="<?= $uid ?>" action="<?= $this->url('test', 'crud') ?>" class="form-horizontal ajax" method="<?= $method ?>">
+<form id="<?= $uid ?>" action="<?= $this->url('test', 'crud') ?>" class="form-horizontal"
+      data-ajax method="<?= $method ?>">
   <input type="hidden" name="id" value="<?= $row->id ?>"/>
   <div class="modal-header">
     <h3 class="modal-title">Test Table</h3>

@@ -28,7 +28,6 @@ class TestSeeder extends AbstractSeed
 
         $this->insert('test', $data);
 
-
         $auth = [
             [
                 'userId' => 2,
@@ -43,6 +42,5 @@ class TestSeeder extends AbstractSeed
             ]
         ];
         $this->insert('auth', $auth);
-
     }
 }
