@@ -69,6 +69,11 @@ require_once __DIR__ .'/partial/demo.phtml';
 <pre class="alert alert-secondary"><code>Db::fetchColumnGroup('SELECT name, id FROM test LIMIT 10')</code></pre>
 <?php demo(Db::fetchColumnGroup('SELECT name, id FROM test LIMIT 10')) ?>
 
+<h3>Db::fetchColumnGroup</h3>
+<hr/>
+<pre class="alert alert-secondary"><code>Db::fetchUniqueGroup('SELECT email, id, name FROM test LIMIT 10')</code></pre>
+<?php demo(Db::fetchUniqueGroup('SELECT email, id, name FROM test LIMIT 10')) ?>
+
 <h3>Db::fetchObject</h3>
 <hr/>
 <pre class="alert alert-secondary"><code>Db::fetchObject('SELECT * FROM test LIMIT 1')</code></pre>
