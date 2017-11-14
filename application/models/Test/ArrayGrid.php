@@ -22,11 +22,9 @@ class ArrayGrid extends Grid
     protected $uid = 'arr';
 
     /**
-     * init
-     *
-     * @return self
+     * {@inheritdoc}
      */
-    public function init()
+    public function init() : void
     {
         // Source of grid
         $adapter = new ArraySource();
@@ -49,7 +47,5 @@ class ArrayGrid extends Grid
         $this->setDefaultLimit(3);
         $this->setAllowOrders(['name', 'email', 'id']);
         $this->setAllowFilters(['name', 'status', 'id']);
-
-        return $this;
     }
 }

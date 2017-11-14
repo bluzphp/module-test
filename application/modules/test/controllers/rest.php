@@ -11,7 +11,7 @@
 namespace Application;
 
 use Application\Test;
-use Bluz\Application\Exception\ForbiddenException;
+use Bluz\Http\Exception\ForbiddenException;
 use Bluz\Controller\Controller;
 use Bluz\Controller\Mapper\Rest;
 

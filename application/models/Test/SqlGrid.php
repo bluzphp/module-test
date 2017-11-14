@@ -22,11 +22,9 @@ class SqlGrid extends Grid
     protected $uid = 'sql';
 
     /**
-     * init
-     *
-     * @return self
+     * {@inheritdoc}
      */
-    public function init()
+    public function init() : void
     {
         // Source of grid
         $adapter = new SqlSource();
@@ -37,7 +35,5 @@ class SqlGrid extends Grid
         $this->setAllowOrders(['name', 'id', 'status']);
         $this->setAllowFilters(['status', 'id']);
         $this->setDefaultOrder('name', Grid::ORDER_DESC);
-
-        return $this;
     }
 }
