@@ -12,12 +12,13 @@ if (!$grid) {
     // use data-spy="grid" for use AJAX for reload grid
     require(['bluz.grid']);
   </script>
-  <p>
-    Filters:<br/>
-    <a href="<?= $grid->filter('id', 'gt', 3) ?>">With Id &gt; 3</a> <br/>
-    <a href="<?= $grid->filter('id', 'lt', 9) ?>">With Id &lt; 9</a> <br/>
-    <a href="<?= $grid->filter('id', 'ne', 5, false) ?>">AND Id != 5</a>
-  </p>
+  <nav class="navbar navbar-light bg-light justify-content-start">
+    <a class="navbar-brand" href="#">Filters:</a>
+    <a href="<?= $grid->filter('id', 'gt', 3) ?>" class="btn btn-info ml-3" data-ajax>With Id &gt; 3</a>
+    <a href="<?= $grid->filter('id', 'lt', 9) ?>" class="btn btn-info ml-3" data-ajax>With Id &lt; 9</a>
+    <a href="<?= $grid->filter('id', 'ne', 5, false) ?>" class="btn btn-info ml-3" data-ajax>AND Id != 5</a>
+  </nav>
+
   <hr/>
 
   <?= $this->partial('grid/total.phtml', ['grid' => $grid]) ?>

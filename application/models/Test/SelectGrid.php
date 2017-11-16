@@ -23,11 +23,9 @@ class SelectGrid extends Grid
     protected $uid = 'sel';
 
     /**
-     * init
-     *
-     * @return self
+     * {@inheritdoc}
      */
-    public function init()
+    public function init() : void
     {
         // Source of grid
         $adapter = new SelectSource();
@@ -41,7 +39,5 @@ class SelectGrid extends Grid
         $this->setDefaultLimit(15);
         $this->setAllowOrders(['name', 'id', 'status']);
         $this->setAllowFilters(['status', 'id']);
-
-        return $this;
     }
 }

@@ -35,7 +35,7 @@ class Row extends \Bluz\Db\Row
      *
      * @return void
      */
-    protected function beforeSave()
+    protected function beforeSave() : void
     {
         // name validator
         $this->addValidator('name')
