@@ -1,9 +1,9 @@
 require.config({
   paths: {
     pager: './test/pager',
-    text: './vendor/text',
-    jsx: './vendor/jsx',
-    JSXTransformer: './vendor/JSXTransformer',
+    text: './../vendor/text/text',
+    jsx: './../vendor/jsx/jsx',
+    JSXTransformer: './../vendor/jsx/JSXTransformer',
     // see more at https://cdnjs.com/
     underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore',
     backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone',
