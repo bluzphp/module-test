@@ -12,7 +12,7 @@ Layout::breadCrumbs(
 );
 $url = $this->url('test', 'cache-controller', ['a' => random_int(1, 5)]);
 
-$enabled = \Bluz\Proxy\Config::getData('cache', 'enabled');
+$enabled = \Bluz\Proxy\Config::get('cache', 'enabled');
 
 if (!$enabled) :
 ?>
