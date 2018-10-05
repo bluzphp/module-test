@@ -20,7 +20,7 @@ use Bluz\Validator\Traits\Validator;
  * @property string  $email
  * @property string  $status enum('active','disable','delete')
  *
- * @OA\Definition(definition="test", title="test", required={"id", "name", "email"})
+ * @OA\Schema(schema="test", title="test", required={"id", "name", "email"})
  * @OA\Property(property="id", type="integer")
  * @OA\Property(property="name", type="string")
  * @OA\Property(property="email", type="string")
