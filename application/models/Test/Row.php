@@ -20,11 +20,11 @@ use Bluz\Validator\Traits\Validator;
  * @property string  $email
  * @property string  $status enum('active','disable','delete')
  *
- * @SWG\Definition(definition="test", title="test", required={"id", "name", "email"})
- * @SWG\Property(property="id", type="integer")
- * @SWG\Property(property="name", type="string")
- * @SWG\Property(property="email", type="string")
- * @SWG\Property(property="status", type="string", enum={"active","disable","delete"})
+ * @OA\Schema(schema="test", title="test", required={"id", "name", "email"})
+ * @OA\Property(property="id", type="integer")
+ * @OA\Property(property="name", type="string")
+ * @OA\Property(property="email", type="string")
+ * @OA\Property(property="status", type="string", enum={"active","disable","delete"})
  */
 class Row extends \Bluz\Db\Row
 {
