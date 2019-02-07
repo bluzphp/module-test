@@ -33,7 +33,7 @@ return function () {
         Options\Table::remove('example');
     } else {
         $message = 'Option `example` not found, try again later';
-        Options\Table::set('example', uniqid('example_'));
+        Options\Table::set('example', uniqid('example_', true));
     }
 
     $this->assign('message', $message);
