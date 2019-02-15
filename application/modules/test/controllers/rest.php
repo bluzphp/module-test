@@ -24,7 +24,6 @@ use Bluz\Controller\Mapper\Rest;
  * @acl    Delete
  *
  * @return mixed
- * @throws ForbiddenException
  */
 return function () {
     /**

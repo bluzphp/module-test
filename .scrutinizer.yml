@@ -1,4 +1,5 @@
 checks:
+  javascript: true
   php:
     psr2_switch_declaration: true
     psr2_class_declaration: true
@@ -9,9 +10,6 @@ filter:
   excluded_paths:
     - 'tests/*'
     - 'public/js/vendor/*'
-checks:
-  php: true
-  javascript: true
 tools:
   php_analyzer: true
   php_code_sniffer:
