@@ -33,7 +33,16 @@ $roles = $user->getRelations('Roles');
 demo($roles);
 ?>
 
-<h3>User - Page relation</h3>
+<h3>User - Find pages by user ID</h3>
+<hr/>
+<pre class="alert alert-secondary"><code>Db\Relations::findRelations('Users', 'Pages', [1, 2, 3])</code></pre>
+
+<?php
+$result = \Bluz\Db\Relations::findRelations('Users', 'Pages', [1, 2, 3]);
+demo($result);
+?>
+
+<h3>User - Fetch page relation</h3>
 <hr/>
 <pre class="alert alert-secondary"><code>Db::fetchRelations(
   "SELECT '__users', u.*, '__pages', p.* FROM users u LEFT JOIN pages p ON p.userId = u.id LIMIT 1"
