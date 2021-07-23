@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Works with Options Module
  *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Disable view and layout
  *

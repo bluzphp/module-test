@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Example of DB usage
  *
