@@ -14,13 +14,13 @@ class TestSeeder extends AbstractSeed
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
-
+        $prefix = bin2hex(random_bytes(4));
         $data = [];
         for ($i = 0; $i < 100; $i++) {
+            $name = uniqid($prefix);
             $data[] = [
-                'name'    => $faker->userName,
-                'email'   => $faker->email,
+                'name'    => $name,
+                'email'   => $name . '@localhost.com',
                 'status'  => array_rand(['active' => 1, 'disable' => 2, 'delete' => 3]),
                 'created' => date('Y-m-d H:i:s'),
             ];

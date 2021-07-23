@@ -1,13 +1,11 @@
 <?php
-$this->headScript($this->baseUrl('js/test/config.js'));
 if (isset($errors)) :?>
-  <script>
-    require(['bluz.form'], function (form) {
-      var $form = $('#form');
-        <?php foreach ($errors as $field => $error) : ?>
+  <script type="module">
+      import {form} from '/js/bluz.form.js';
+      let $form = $('#form');
+      <?php foreach ($errors as $field => $error) : ?>
       form.notice($form, '[name^="<?=$field?>"]', '<?=$error?>');
-        <?php endforeach;?>
-    });
+      <?php endforeach;?>
   </script>
 <?php endif; ?>
 <form id="form" action="<?= $this->url('test', 'create') ?>" class="form-horizontal" method="POST">

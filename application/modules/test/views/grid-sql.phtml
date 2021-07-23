@@ -1,6 +1,4 @@
 <?php
-$this->headScript($this->baseUrl('js/test/config.js'));
-
 /**
  * @var \Bluz\Grid\Grid $grid
  */
@@ -8,19 +6,19 @@ if (!$grid) {
     return;
 }
 ?>
-<script>
-  // use data-spy="grid" for use AJAX for reload grid
-  require(['bluz.grid']);
+<script type="module">
+    // use data-spy="grid" for use AJAX for reload grid
+    import '/js/bluz.grid.js';
 </script>
 
 <div class="clearfix" data-spy="grid" data-grid="<?= $grid->getUid() ?>">
   <nav class="navbar navbar-light bg-light justify-content-start">
     <a class="navbar-brand ml-3" href="#">Filters:</a>
-    <a href="<?= $grid->filter('status', 'eq', 'active') ?>" class="btn btn-info ml-3" data-ajax>All Active Users</a>
-    <a href="<?= $grid->filter('id', 'gt', 30) ?>" class="btn btn-info ml-3" data-ajax>All users with Id &gt; 30</a>
-    <a href="<?= $grid->filter('id', 'lt', 70, false) ?>" class="btn btn-info ml-3" data-ajax>AND users with Id &lt; 70</a>
-    <a href="<?= $grid->filter('status', 'eq', 'active', false) ?>" class="btn btn-info ml-3" data-ajax>AND Active Users</a>
-    <a href="<?= $grid->filter('id', 'ne', 42, false) ?>" class="btn btn-info ml-3" data-ajax>AND without user with Id = 42</a>
+    <a href="<?= $grid->filter('status', 'eq', 'active') ?>" class="btn btn-info ms-3" data-ajax>All Active Users</a>
+    <a href="<?= $grid->filter('id', 'gt', 30) ?>" class="btn btn-info ms-3" data-ajax>All users with Id &gt; 30</a>
+    <a href="<?= $grid->filter('id', 'lt', 70, false) ?>" class="btn btn-info ms-3" data-ajax>AND users with Id &lt; 70</a>
+    <a href="<?= $grid->filter('status', 'eq', 'active', false) ?>" class="btn btn-info ms-3" data-ajax>AND Active Users</a>
+    <a href="<?= $grid->filter('id', 'ne', 42, false) ?>" class="btn btn-info ms-3" data-ajax>AND without user with Id = 42</a>
   </nav>
   <hr/>
   <nav class="navbar navbar-light bg-light justify-content-start">
@@ -50,11 +48,11 @@ if (!$grid) {
         <td class="controls d-flex justify-content-around">
           <a href="<?= $this->url('test', 'crud', ['id' => $row['id']]) ?>" class="btn btn-primary"
              data-ajax-dialog data-ajax-method="get">
-            <i class="fas fa-pencil-alt"></i>
+              <i class="bi bi-pencil"></i>
           </a>
           <a href="<?= $this->url('test', 'crud', ['id' => $row['id']]) ?>" class="btn btn-danger"
              data-confirm data-ajax data-ajax-method="delete">
-            <i class="fa fa-times"></i>
+              <i class="bi bi-trash"></i>
           </a>
         </td>
       </tr>

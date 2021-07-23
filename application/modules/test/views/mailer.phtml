@@ -4,10 +4,8 @@
 
 <form action="<?= $this->url('test', 'mailer') ?>" method="POST">
   <div class="form-group">
-    <label class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-fw fa-envelope"></i></span>
-      </div>
+    <label class="input-group mb-1">
+      <span class="input-group-text"><i class="bi bi-envelope"></i></span>
       <input type="email" class="form-control" name="email" value="<?= $email ?>" placeholder="<?= __('email') ?>"/>
     </label>
   </div>
