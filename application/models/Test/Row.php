@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Bluz PHP Team
  * @link      https://github.com/bluzphp/skeleton
@@ -35,7 +36,7 @@ class Row extends \Bluz\Db\Row
      *
      * @return void
      */
-    protected function beforeSave() : void
+    protected function beforeSave(): void
     {
         // name validator
         $this->addValidator('name')

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Disable view, like for backbone.js
  *

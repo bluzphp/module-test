@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Example of partial methods of View
  *

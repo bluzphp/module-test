@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Bluz PHP Team
  * @link https://github.com/bluzphp/skeleton
@@ -29,7 +30,7 @@ class RestTest extends ControllerTestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         self::setupSuperUserIdentity();
@@ -72,7 +73,7 @@ class RestTest extends ControllerTestCase
     /**
      * Tear down environment
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         Db::delete('test')->where('id > ?', 1000)->execute();
         parent::tearDown();
@@ -125,7 +126,7 @@ class RestTest extends ControllerTestCase
         );
 
         self::assertResponseCode(StatusCode::CREATED);
-        self::assertEquals(Response::getHeader('Location'), '/test/rest/'.$primary);
+        self::assertEquals(Response::getHeader('Location'), '/test/rest/' . $primary);
     }
 
     /**

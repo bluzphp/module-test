@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Bluz PHP Team
  * @link https://github.com/bluzphp/skeleton
@@ -29,7 +30,7 @@ class CrudTest extends ControllerTestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         self::setupSuperUserIdentity();
@@ -71,7 +72,7 @@ class CrudTest extends ControllerTestCase
     /**
      * Tear down environment
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         Db::delete('test')->where('id > ?', 1000)->execute();
         parent::tearDown();

@@ -3,7 +3,6 @@
  * @var \Application\Users\Row $user
  * @var \Bluz\View\View        $this
  */
-$this->headScript($this->baseUrl('js/test/config.js'));
 ?>
 <style>
   #rest a.btn {
@@ -146,8 +145,10 @@ $this->headScript($this->baseUrl('js/test/config.js'));
     </div>
     <hr/>
   </div>
-  <script>
-    require(["jquery", "bluz", "bluz.notify"], function ($, bluz, notify) {
+    <script type="module">
+        import '../vendor/jquery/jquery.js';
+        import {notify} from '/js/bluz.notify.js';
+
       $(function () {
         let $rest = $('#rest');
         $rest
@@ -172,7 +173,6 @@ $this->headScript($this->baseUrl('js/test/config.js'));
 
           });
       });
-    });
   </script>
 </section>
 
@@ -202,21 +202,27 @@ $this->headScript($this->baseUrl('js/test/config.js'));
       AJAX call with trigger
     </a>
   </div>
+    <div class="btn-group">
+        <a href="<?= $this->url('test', 'sleep') ?>" id="ajax-callback" class="btn btn-light" data-ajax>
+            Long AJAX response
+        </a>
+    </div>
   <hr/>
   <p>Example of JavaScript:</p>
-  <pre class="alert alert-secondary"><code>require(["jquery", "bluz.notify"], function($, notify) {
-    $(function(){
-      $('#ajax-callback') <em>// button above</em>
-        .on('success.bluz.ajax', function(){
-          notify.addSuccess("Event `success.bluz.ajax` has been fired")
-        })
-        .on('error.bluz.ajax', function(){
-          notify.addSuccess("Event `error.bluz.ajax` has been fired")
-        });
+  <pre class="alert alert-secondary"><code>import '../vendor/jquery/jquery.js';
+import {notify} from '/js/bluz.notify.js';
+$(function(){
+  $('#ajax-callback') <em>// button above</em>
+    .on('success.bluz.ajax', function(){
+      notify.addSuccess("Event `success.bluz.ajax` has been fired")
+    })
+    .on('error.bluz.ajax', function(){
+      notify.addSuccess("Event `error.bluz.ajax` has been fired")
     });
-  });</code></pre>
-  <script>
-    require(["jquery", "bluz.notify"], function ($, notify) {
+});</code></pre>
+  <script type="module">
+      import '../vendor/jquery/jquery.js';
+      import {notify} from '/js/bluz.notify.js';
       $(function () {
         $('#ajax-callback')
           .on('success.bluz.ajax', function () {
@@ -232,7 +238,6 @@ $this->headScript($this->baseUrl('js/test/config.js'));
               });
           });
       });
-    });
   </script>
   <hr/>
   <div class="d-flex justify-content-around">
@@ -274,9 +279,9 @@ $this->headScript($this->baseUrl('js/test/config.js'));
   <h3>Access denied</h3>
   <p class="text-muted">If you try to load forbidden pages, system would send notice to you</p>
   <div class="d-flex justify-content-around">
-    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger" data-toggle="tooltip" data-ajax
+    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger" data-bs-toggle="tooltip" data-ajax
        title="Return error message">Denied page, AJAX call</a>
-    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger" data-toggle="tooltip" data-ajax
+    <a href="<?= $this->url('test', 'denied') ?>" class="btn btn-danger" data-bs-toggle="tooltip" data-ajax
        title="Return error dialog">Denied page, AJAX dialog</a>
   </div>
   <hr/>

@@ -1,12 +1,11 @@
 <?php
 
 /**
- * Disable view and layout
+ * Sleep 13 second, example for show loading element
  *
  * @category Example
  *
  * @author   Anton Shevchuk
- * @created  22.08.12 17:14
  */
 
 namespace Application;
@@ -15,5 +14,6 @@ namespace Application;
  * @return false
  */
 return function () {
+    sleep(3);
     return false;
 };

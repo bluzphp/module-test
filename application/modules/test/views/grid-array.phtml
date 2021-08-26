@@ -1,5 +1,4 @@
 <?php
-$this->headScript($this->baseUrl('js/test/config.js'));
 /**
  * @var \Bluz\Grid\Grid $grid
  */
@@ -8,15 +7,15 @@ if (!$grid) {
 }
 ?>
 <div class="clearfix" data-spy="grid" data-grid="<?= $grid->getUid() ?>">
-  <script>
+  <script type="module">
     // use data-spy="grid" for use AJAX for reload grid
-    require(['bluz.grid']);
+    import '/js/bluz.grid.js';
   </script>
   <nav class="navbar navbar-light bg-light justify-content-start">
     <a class="navbar-brand" href="#">Filters:</a>
-    <a href="<?= $grid->filter('id', 'gt', 3) ?>" class="btn btn-info ml-3" data-ajax>With Id &gt; 3</a>
-    <a href="<?= $grid->filter('id', 'lt', 9) ?>" class="btn btn-info ml-3" data-ajax>With Id &lt; 9</a>
-    <a href="<?= $grid->filter('id', 'ne', 5, false) ?>" class="btn btn-info ml-3" data-ajax>AND Id != 5</a>
+    <a href="<?= $grid->filter('id', 'gt', 3) ?>" class="btn btn-info ms-3" data-ajax>With Id &gt; 3</a>
+    <a href="<?= $grid->filter('id', 'lt', 9) ?>" class="btn btn-info ms-3" data-ajax>With Id &lt; 9</a>
+    <a href="<?= $grid->filter('id', 'ne', 5, false) ?>" class="btn btn-info ms-3" data-ajax>AND Id != 5</a>
   </nav>
 
   <hr/>

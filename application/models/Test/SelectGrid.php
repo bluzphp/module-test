@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Bluz PHP Team
  * @link      https://github.com/bluzphp/skeleton
@@ -25,7 +26,7 @@ class SelectGrid extends Grid
     /**
      * {@inheritdoc}
      */
-    public function init() : void
+    public function init(): void
     {
         // Source of grid
         $adapter = new SelectSource();

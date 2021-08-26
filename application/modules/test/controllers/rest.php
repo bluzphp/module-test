@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Complex example of REST controller
  *

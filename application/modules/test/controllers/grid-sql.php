@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Example of grid based on SQL
  *

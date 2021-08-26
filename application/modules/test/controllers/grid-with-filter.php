@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Grid with filters
  *

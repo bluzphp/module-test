@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Bluz PHP Team
  * @link https://github.com/bluzphp/skeleton
@@ -37,7 +38,7 @@ class AjaxTest extends ControllerTestCase
      */
     public function testAjaxWithParams()
     {
-        $this->dispatch('/test/ajax/', ['messages'=>1], RequestMethod::POST, true);
+        $this->dispatch('/test/ajax/', ['messages' => 1], RequestMethod::POST, true);
         self::assertOk();
         self::assertErrorMessage();
         self::assertNoticeMessage();
