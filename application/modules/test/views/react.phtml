@@ -9,6 +9,7 @@ $this->headScript('https://unpkg.com/@babel/standalone/babel.min.js');
 <div id="like_button_container"></div>
 <div id="hello_button"></div>
 
+<?=$this->script($this->baseUrl('js/test/react.jsx'), ['type' => 'text/babel', 'data-type' => 'module']);?>
 <?=$this->script($this->baseUrl('js/test/button.js'), ['type' => 'module']);?>
 <?=$this->script($this->baseUrl('js/test/hello.jsx'), ['type' => 'text/babel', 'data-type' => 'module']);?>
 
