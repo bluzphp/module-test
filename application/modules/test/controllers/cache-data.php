@@ -36,7 +36,7 @@ return function ($id = null) {
 
     // try to load profile of current user
     if (!$id && $this->user()) {
-        $id = $this->user()->id;
+        $id = $this->user()->getId();
     }
 
     if (!$id) {

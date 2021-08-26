@@ -1,8 +1,5 @@
 # Module test for Bluz Skeleton
-
-### Achievements
-
-[![PHP >= 7.1+](https://img.shields.io/packagist/php-v/bluzphp/module-test.svg?style=flat)](https://php.net/)
+## Achievements
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/bluzphp/module-test.svg?label=version&style=flat)](https://packagist.org/packages/bluzphp/module-test)
 
@@ -14,9 +11,7 @@
 
 [![License](https://img.shields.io/packagist/l/bluzphp/module-test.svg?style=flat)](https://packagist.org/packages/bluzphp/module-test)
 
-
-Usage
--------------------------
+## Usage
 ### Install module
 To install the module run the command:
   
