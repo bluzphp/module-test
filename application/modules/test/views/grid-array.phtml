@@ -6,11 +6,12 @@ if (!$grid) {
     return;
 }
 ?>
+<script type="module">
+  // use data-spy="grid" for use AJAX for reload grid
+  import '<?=$this->baseUrl('/js/bluz.grid.js');?>';
+</script>
+
 <div class="clearfix" data-spy="grid" data-grid="<?= $grid->getUid() ?>">
-  <script type="module">
-    // use data-spy="grid" for use AJAX for reload grid
-    import '/js/bluz.grid.js';
-  </script>
   <nav class="navbar navbar-light bg-light justify-content-start">
     <a class="navbar-brand" href="#">Filters:</a>
     <a href="<?= $grid->filter('id', 'gt', 3) ?>" class="btn btn-info ms-3" data-ajax>With Id &gt; 3</a>
