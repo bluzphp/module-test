@@ -2,7 +2,7 @@
   "name": "bluzphp/module-test",
   "type": "bluz-module",
   "license": "MIT",
-  "description": "Bluz test module",
+  "description": "bluz test module",
   "require": {
     "bluzphp/composer-plugin": "~2.4"
   }
